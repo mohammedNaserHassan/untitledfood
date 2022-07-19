@@ -108,6 +108,9 @@ bool stateofWidgets = true;
     categoryProducts = products['meals'];
     notifyListeners();
   }
+  ////////////////////////////////////////////////////////////
+  bool visible = false;
+  //////////////////////////////////////////add floating action button to tabs ///////////////////////////////////////////////////////////////
 bool isFloating = false;
   setFloating(){
     this.isFloating=true;

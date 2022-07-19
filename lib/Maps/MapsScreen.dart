@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
@@ -35,7 +36,7 @@ class MapScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.only(top: 40, bottom: 10),
+                margin: EdgeInsets.only(top: 40.h, bottom: 10.h),
                 width: double.infinity,
                 height: 560,
                 child: provider.myLocation==null?

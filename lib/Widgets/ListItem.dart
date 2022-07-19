@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/API/URLLauncher.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
@@ -29,7 +30,7 @@ class ListItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Container(
-                        margin: EdgeInsets.symmetric(vertical: 10),
+                        margin: EdgeInsets.symmetric(vertical: 10.h),
                         child: CachedNetworkImage(
                           imageUrl: provider.filteredPrducts[index]
                               ['strMealThumb'],
@@ -38,7 +39,7 @@ class ListItem extends StatelessWidget {
                       Text(
                         provider.filteredPrducts[index]['strMeal'],
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                            fontSize: 16.sp, fontWeight: FontWeight.bold),
                       ),
                       Row(
                         children: [
@@ -55,16 +56,16 @@ class ListItem extends StatelessWidget {
                             style: TextStyle(color: Colors.grey),
                           ),
                           SizedBox(
-                            width: 5,
+                            width: 5.w,
                           ),
                           Text(
                             provider.filteredPrducts[index]['strCategory'],
                             style: TextStyle(color: Colors.grey),
                           ),
                           Container(
-                            margin: EdgeInsets.symmetric(horizontal: 5),
-                            width: 3,
-                            height: 3,
+                            margin: EdgeInsets.symmetric(horizontal: 5.w),
+                            width: 3.w,
+                            height: 3.h,
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Colors.deepOrange),

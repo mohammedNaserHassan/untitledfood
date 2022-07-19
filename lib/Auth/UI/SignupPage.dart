@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Auth/UI/LoginPage.dart';
 import 'package:untitledfood/Providers/AuthProvider.dart';
@@ -24,17 +25,17 @@ class SignupPage extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                  margin: EdgeInsets.symmetric(vertical: 15),
+                  margin: EdgeInsets.symmetric(vertical: 15.h),
                   child: Center(
                       child: Text(
                     'Sign Up',
-                    style: TextStyle(fontSize: 30),
+                    style: TextStyle(fontSize: 30.sp),
                   ))),
               Center(
                   child: MyText(
-                      text: 'Add your details to sign up', verticall: 5)),
+                      text: 'Add your details to sign up', verticall: 5.h)),
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
               CustomTextField(
                 label: 'Name',
@@ -74,7 +75,7 @@ class SignupPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  MyText(text: 'Already have an Account?', verticall: 10),
+                  MyText(text: 'Already have an Account?', verticall: 10.h),
                   TextButton(
                       onPressed: () {
                         AppRouter.appRouter
@@ -85,7 +86,7 @@ class SignupPage extends StatelessWidget {
                         style: TextStyle(
                             color: Colors.red,
                             fontWeight: FontWeight.bold,
-                            fontSize: 15),
+                            fontSize: 15.sp),
                       ))
                 ],
               )

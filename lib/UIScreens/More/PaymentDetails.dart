@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
 import 'package:untitledfood/Widgets/BottomSheet.dart';
@@ -27,21 +28,21 @@ class PaymentDetails extends StatelessWidget {
                   icon: Icon(Icons.arrow_back_ios)),
             ),
             Container(
-              margin: EdgeInsets.only(right: 100, top: 10, bottom: 10),
+              margin: EdgeInsets.only(right: 100.w, top: 10.h, bottom: 10.h),
               child: Text(
                 'Customize your payment method',
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.bold),
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
               child: Divider(
                 color: Colors.grey,
               ),
             ),
             Container(
               width: double.infinity,
-              height: 200,
+              height: 200.h,
               decoration:
                   BoxDecoration(color: Colors.grey.shade100, boxShadow: [
                 BoxShadow(
@@ -55,20 +56,20 @@ class PaymentDetails extends StatelessWidget {
                 children: [
                   ListTile(
                     trailing: Container(
-                        margin: EdgeInsets.only(right: 20),
+                        margin: EdgeInsets.only(right: 20.w),
                         child: Icon(
                           Icons.check,
                           color: Colors.deepOrange,
-                          size: 30,
+                          size: 30.sp,
                         )),
                     title: Text(
                       'Cash/Card on delivery',
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 13.sp),
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 40),
+                    margin: EdgeInsets.symmetric(horizontal: 40.w),
                     child: Divider(
                       color: Colors.grey,
                     ),
@@ -77,12 +78,12 @@ class PaymentDetails extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                          margin: EdgeInsets.only(left: 40),
-                          child: Text('VISA',style: TextStyle(color: Color(0xff00008b),fontWeight: FontWeight.bold,fontSize: 30),)),
+                          margin: EdgeInsets.only(left: 40.w),
+                          child: Text('VISA',style: TextStyle(color: Color(0xff00008b),fontWeight: FontWeight.bold,fontSize: 30.sp),)),
                       Text('****\t\t****\t\t\t\t\t\t 2187'),
                       Container(
-                          width: 155,
-                          height: 55,
+                          width: 155.w,
+                          height: 55.h,
                           child: CustomButton(
                             borderColor: Color(0xfffc6011),
                             fill: Color.fromARGB(0, 0, 0, 1),
@@ -92,17 +93,17 @@ class PaymentDetails extends StatelessWidget {
                     ],
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 40),
+                    margin: EdgeInsets.symmetric(horizontal: 40.w),
                     child: Divider(
                       color: Colors.grey,
                     ),
                   ),
                   Container(
-                      margin: EdgeInsets.only(right: 250),
+                      margin: EdgeInsets.only(right: 250.w),
                       child: Text(
                         'Other Methods',
                         style: TextStyle(
-                            fontSize: 10, fontWeight: FontWeight.bold),
+                            fontSize: 10.sp, fontWeight: FontWeight.bold),
                       )),
                 ],
               ),
@@ -118,25 +119,25 @@ class PaymentDetails extends StatelessWidget {
               },
               child: Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(80),
+                    borderRadius: BorderRadius.circular(80.sp),
                     color: Color(0xfffc6011)),
                 width: double.infinity,
-                height: 50,
-                margin: EdgeInsets.symmetric(vertical: 50, horizontal: 10),
+                height: 50.h,
+                margin: EdgeInsets.symmetric(vertical: 50.h, horizontal: 10.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
                       Icons.add,
                       color: Colors.white,
-                      size: 30,
+                      size: 30.sp,
                     ),
                     SizedBox(
-                      width: 10,
+                      width: 10.w,
                     ),
                     Text(
                       'Add Another Credit/Debit Card',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      style: TextStyle(color: Colors.white, fontSize: 20.sp),
                     )
                   ],
                 ),

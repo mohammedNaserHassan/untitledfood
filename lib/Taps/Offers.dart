@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/API/URLLauncher.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
@@ -19,14 +20,14 @@ class OffersTab extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                  margin: EdgeInsets.only(left: 30, bottom: 30),
+                  margin: EdgeInsets.only(left: 30.w, bottom: 30.h),
                   child: Text(
                     'Find discounts , offer special',
                     style: TextStyle(color: Colors.grey),
                   )),
               Container(
-                  height: 55,
-                  width: 255,
+                  height: 55.h,
+                  width: 255.w,
                   child: CustomButton(
                     text: 'Check Offers',
                     textcolor: Colors.white,
@@ -49,7 +50,7 @@ class OffersTab extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               Container(
-                                margin: EdgeInsets.symmetric(vertical: 10),
+                                margin: EdgeInsets.symmetric(vertical: 10.h),
                                 child: CachedNetworkImage(
                                   imageUrl: provider.filteredPrducts[index]
                                       ['strMealThumb'],
@@ -58,7 +59,7 @@ class OffersTab extends StatelessWidget {
                               Text(
                                 provider.filteredPrducts[index]['strMeal'],
                                 style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
+                                    fontSize: 16.sp, fontWeight: FontWeight.bold),
                               ),
                               Text(provider.filteredPrducts[index]
                                   ['strCategory']),

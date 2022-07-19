@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
 import 'package:untitledfood/UIScreens/More/AboutScreen.dart';
@@ -17,7 +18,7 @@ class MoreTab extends StatelessWidget {
         color: Colors.white,
         child: ListView(
           children: [
-            SizedBox(height: 20,),
+            SizedBox(height: 20.h,),
             MoreWidget(icon: Icons.monetization_on,title: 'Payment Details',number: 0,),
             MoreWidget(icon: Icons.shopping_bag,title: 'My Orders',number: 1,),
             MoreWidget(icon: Icons.notifications,title: 'Notifications',state: true,number: 2,),

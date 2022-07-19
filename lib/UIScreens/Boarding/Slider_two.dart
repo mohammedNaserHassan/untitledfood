@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:untitledfood/Services/Router.dart';
-import 'package:untitledfood/UIScreens/Slider_three.dart';
+
 import 'package:untitledfood/Widgets/CustomButton.dart';
+
+import 'Slider_three.dart';
 class Slider_two extends StatelessWidget {
   static final routeName='two';
    Slider_two();

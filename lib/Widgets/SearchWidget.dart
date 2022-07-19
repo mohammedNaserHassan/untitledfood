@@ -17,6 +17,7 @@ class SearchWidget extends StatelessWidget {
               )),
           Expanded(
             child: TextField(
+              autocorrect: true,
               decoration: InputDecoration(
                   hintText: label,
                   border: InputBorder.none),

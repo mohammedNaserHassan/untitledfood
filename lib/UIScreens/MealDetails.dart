@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
 import 'package:untitledfood/Widgets/CardIcon.dart';
@@ -13,7 +14,7 @@ class MealDetails extends StatefulWidget {
   String id;
   String tag;
 
-  MealDetails({this.id,this.tag});
+  MealDetails({this.id, this.tag});
 
   @override
   _MealDetailsState createState() => _MealDetailsState();
@@ -48,8 +49,8 @@ class _MealDetailsState extends State<MealDetails> {
                       ),
                     ),
                     Positioned(
-                        top: 40,
-                        left: 20,
+                        top: 40.h,
+                        left: 20.w,
                         child: IconButton(
                           icon: Icon(
                             Icons.arrow_back_ios,
@@ -60,13 +61,13 @@ class _MealDetailsState extends State<MealDetails> {
                           },
                         )),
                     Positioned(
-                        top: 40,
-                        right: 20,
+                        top: 40.h,
+                        right: 20.w,
                         child: CardIcon(
                           color: Colors.white,
                         )),
                     Positioned(
-                        top: 370,
+                        top: 370.h,
                         child: Container(
                           decoration: BoxDecoration(
                               boxShadow: [
@@ -76,27 +77,29 @@ class _MealDetailsState extends State<MealDetails> {
                                 )
                               ],
                               borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(40),
-                                topLeft: Radius.circular(40),
+                                topRight: Radius.circular(40.sp),
+                                topLeft: Radius.circular(40.sp),
                               )),
                           width: MediaQuery.of(context).size.width,
-                          height: 500,
+                          height: 500.h,
                           child: SingleChildScrollView(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                    margin: EdgeInsets.only(top: 30, left: 20),
+                                    margin:
+                                        EdgeInsets.only(top: 30.h, left: 20.w),
                                     child: Text(
                                       provider.selectedProduct.strMeal,
-                                      style: TextStyle(fontSize: 22),
+                                      style: TextStyle(fontSize: 22.sp),
                                     )),
                                 Container(
-                                  margin: EdgeInsets.only(top: 10, left: 280),
+                                  margin:
+                                      EdgeInsets.only(top: 10.h, left: 280.w),
                                   child: Text(
                                     'RS.' + '\t' + '200',
                                     style: TextStyle(
-                                      fontSize: 25,
+                                      fontSize: 25.sp,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -105,44 +108,47 @@ class _MealDetailsState extends State<MealDetails> {
                                   child: Text(
                                     '/\tper Portion',
                                     style: TextStyle(
-                                        fontSize: 12, color: Colors.grey),
+                                        fontSize: 12.sp, color: Colors.grey),
                                   ),
-                                  margin: EdgeInsets.only(left: 310),
+                                  margin: EdgeInsets.only(left: 310.w),
                                 ),
                                 Container(
-                                    margin: EdgeInsets.only(top: 10, left: 20),
+                                    margin:
+                                        EdgeInsets.only(top: 10.h, left: 20.w),
                                     child: Text(
                                       'Description',
                                       style: TextStyle(
-                                          fontSize: 20,
+                                          fontSize: 20.sp,
                                           fontWeight: FontWeight.bold),
                                     )),
                                 Container(
-                                    margin: EdgeInsets.only(top: 30, left: 20),
+                                    margin:
+                                        EdgeInsets.only(top: 30.h, left: 20.w),
                                     child: Text(
                                       provider.selectedProduct.strInstructions
                                               .substring(0, 280) +
                                           '.',
                                       style: TextStyle(
-                                          fontSize: 12, color: Colors.grey),
+                                          fontSize: 12.sp, color: Colors.grey),
                                     )),
                                 Container(
                                     margin:
-                                        EdgeInsets.symmetric(horizontal: 10),
+                                        EdgeInsets.symmetric(horizontal: 10.w),
                                     child: Divider(color: Colors.grey)),
                                 Container(
                                     margin: EdgeInsets.only(
-                                      top: 10,
-                                      left: 20,
+                                      top: 10.h,
+                                      left: 20.w,
                                     ),
                                     child: Text(
                                       'Ingredient',
                                       style: TextStyle(
-                                          fontSize: 20,
+                                          fontSize: 20.sp,
                                           fontWeight: FontWeight.bold),
                                     )),
                                 Container(
-                                    margin: EdgeInsets.only(top: 10, left: 20),
+                                    margin:
+                                        EdgeInsets.only(top: 10.h, left: 20.w),
                                     child: Text(
                                       provider.selectedProduct.strIngredient1 ??
                                           '' +
@@ -222,22 +228,23 @@ class _MealDetailsState extends State<MealDetails> {
                                     )),
                                 //
                                 Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 10),
-                                  margin: EdgeInsets.symmetric(
-                                      vertical: 10, horizontal: 30),
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                      color: Colors.grey.shade200,
-                                      borderRadius: BorderRadius.circular(5)),
-                                  child: MyDropDown(
-                                    hint: '-Select the size of portion-',
-                                    t1: "Small",
-                                    t2: "Medium",
-                                    t3: "Large",
-                                  )
-                                ),
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 10.w),
+                                    margin: EdgeInsets.symmetric(
+                                        vertical: 10.h, horizontal: 30.w),
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                        color: Colors.grey.shade200,
+                                        borderRadius:
+                                            BorderRadius.circular(5.sp)),
+                                    child: MyDropDown(
+                                      hint: '-Select the size of portion-',
+                                      t1: "Small",
+                                      t2: "Medium",
+                                      t3: "Large",
+                                    )),
                                 Container(
-                                  margin: EdgeInsets.symmetric(vertical: 20),
+                                  margin: EdgeInsets.symmetric(vertical: 20.h),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
@@ -246,10 +253,10 @@ class _MealDetailsState extends State<MealDetails> {
                                         'Number of Portions',
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 17),
+                                            fontSize: 17.sp),
                                       ),
                                       Container(
-                                        margin: EdgeInsets.only(left: 10),
+                                        margin: EdgeInsets.only(left: 10.w),
                                         child: IconButton(
                                             onPressed: () {
                                               provider.decrement();
@@ -257,13 +264,13 @@ class _MealDetailsState extends State<MealDetails> {
                                             icon: Icon(
                                               Icons.remove,
                                               color: Colors.white,
-                                              size: 15,
+                                              size: 15.sp,
                                             )),
-                                        width: 60,
-                                        height: 30,
+                                        width: 60.w,
+                                        height: 30.h,
                                         decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(30),
+                                                BorderRadius.circular(30.sp),
                                             color: Colors.deepOrangeAccent),
                                       ),
                                       Container(
@@ -273,11 +280,11 @@ class _MealDetailsState extends State<MealDetails> {
                                           style: TextStyle(
                                               color: Colors.deepOrange),
                                         )),
-                                        width: 60,
-                                        height: 30,
+                                        width: 60.w,
+                                        height: 30.h,
                                         decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(30),
+                                                BorderRadius.circular(30.sp),
                                             color: Colors.white,
                                             border: Border.all(
                                                 color: Colors.deepOrange)),
@@ -290,13 +297,13 @@ class _MealDetailsState extends State<MealDetails> {
                                             icon: Icon(
                                               Icons.add,
                                               color: Colors.white,
-                                              size: 12,
+                                              size: 12.sp,
                                             )),
-                                        width: 60,
-                                        height: 30,
+                                        width: 60.w,
+                                        height: 30.h,
                                         decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(30),
+                                                BorderRadius.circular(30.sp),
                                             color: Colors.deepOrangeAccent),
                                       ),
                                     ],
@@ -307,23 +314,25 @@ class _MealDetailsState extends State<MealDetails> {
                                     Stack(
                                       children: [
                                         Container(
-                                          width: 120,
-                                          height: 180,
+                                          width: 120.w,
+                                          height: 180.h,
                                           decoration: BoxDecoration(
                                               color: Colors.deepOrange,
                                               borderRadius: BorderRadius.only(
                                                 bottomRight:
-                                                    Radius.circular(80),
-                                                topRight: Radius.circular(80),
-                                                topLeft: Radius.circular(15),
-                                                bottomLeft: Radius.circular(15),
+                                                    Radius.circular(80.sp),
+                                                topRight:
+                                                    Radius.circular(80.sp),
+                                                topLeft: Radius.circular(15.sp),
+                                                bottomLeft:
+                                                    Radius.circular(15.sp),
                                               )),
                                         ),
                                         Container(
                                           margin: EdgeInsets.symmetric(
-                                              vertical: 40, horizontal: 40),
-                                          width: 300,
-                                          height: 100,
+                                              vertical: 40.h, horizontal: 40.w),
+                                          width: 300.w,
+                                          height: 100.h,
                                           child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceAround,
@@ -333,7 +342,7 @@ class _MealDetailsState extends State<MealDetails> {
                                                 'LKR' + '\t' + '200',
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
-                                                    fontSize: 20),
+                                                    fontSize: 20.sp),
                                               ),
                                               Container(
                                                 child: Row(
@@ -344,7 +353,7 @@ class _MealDetailsState extends State<MealDetails> {
                                                     Icon(
                                                       Icons.shopping_cart,
                                                       color: Colors.white,
-                                                      size: 10,
+                                                      size: 10.sp,
                                                     ),
                                                     Text(
                                                       'Add toCart',
@@ -353,13 +362,13 @@ class _MealDetailsState extends State<MealDetails> {
                                                     )
                                                   ],
                                                 ),
-                                                width: 100,
-                                                height: 30,
+                                                width: 100.w,
+                                                height: 30.h,
                                                 decoration: BoxDecoration(
                                                     color: Colors.deepOrange,
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            60)),
+                                                            60.sp)),
                                               ),
                                             ],
                                           ),
@@ -375,18 +384,20 @@ class _MealDetailsState extends State<MealDetails> {
                                               ],
                                               borderRadius: BorderRadius.only(
                                                 bottomRight:
-                                                    Radius.circular(15),
-                                                topRight: Radius.circular(15),
-                                                topLeft: Radius.circular(40),
-                                                bottomLeft: Radius.circular(40),
+                                                    Radius.circular(15.sp),
+                                                topRight:
+                                                    Radius.circular(15.sp),
+                                                topLeft: Radius.circular(40.sp),
+                                                bottomLeft:
+                                                    Radius.circular(40.sp),
                                               )),
                                         ),
                                         Positioned(
-                                          right: 20,
-                                          top: 70,
+                                          right: 20.w,
+                                          top: 70.h,
                                           child: Container(
-                                            width: 45,
-                                            height: 45,
+                                            width: 45.w,
+                                            height: 45.h,
                                             decoration: BoxDecoration(
                                                 boxShadow: [
                                                   BoxShadow(
@@ -409,15 +420,15 @@ class _MealDetailsState extends State<MealDetails> {
                                   ],
                                 ),
                                 SizedBox(
-                                  height: 50,
+                                  height: 50.h,
                                 )
                               ],
                             ),
                           ),
                         )),
                     Positioned(
-                        top: 350,
-                        right: 20,
+                        top: 350.h,
+                        right: 20.w,
                         child: Transform.rotate(
                           angle: 120,
                           child: Card(

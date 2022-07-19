@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
 class InboxSecreen extends StatelessWidget {
@@ -15,7 +16,7 @@ class InboxSecreen extends StatelessWidget {
                 onPressed: (){provider.changeStates(3);},
                 icon: Icon(Icons.arrow_back_ios)),),
             SizedBox(
-              height: 600,
+              height: 600.h,
               child: ListView.builder(
                 itemCount: 6,
                 itemBuilder: (context,index){
@@ -26,11 +27,11 @@ class InboxSecreen extends StatelessWidget {
                         ListTile(
                           title: Text('MealMonkey Promotions'),
                           subtitle: Text('Lorem ipsum dolor sit',style: TextStyle(color: Colors.grey),),
-                          leading: CircleAvatar(backgroundColor: Colors.deepOrange,radius: 5,),
+                          leading: CircleAvatar(backgroundColor: Colors.deepOrange,radius: 5.sp,),
                           trailing: Text('${index+1}th July',style: TextStyle(color: Colors.grey),),
                         ),
                         Container(
-                          margin: EdgeInsets.only(bottom: 5),
+                          margin: EdgeInsets.only(bottom: 5.h),
                             alignment: Alignment.bottomRight,
                             child: Icon(Icons.star_border_outlined,color: Colors.deepOrange,))
                       ],

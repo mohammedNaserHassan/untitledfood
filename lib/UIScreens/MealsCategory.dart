@@ -2,6 +2,7 @@ import 'package:animated_card/animated_card.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
 import 'package:untitledfood/UIScreens/HomePage.dart';
@@ -47,13 +48,13 @@ class _MealsCategoryState extends State<MealsCategory> {
       ),
       body: Consumer<MyProvider>(
         builder: (context, provider, v) => provider.categoryProducts == null
-            ? CircularProgressIndicator()
+            ? Center(child: CircularProgressIndicator())
             : SingleChildScrollView(
                 child: Column(
                   children: [
                     SearchWidget(label: 'Search food'),
                     SizedBox(
-                      height: 700,
+                      height: 700.h,
                       child:
                       ListView.builder(
                         shrinkWrap: true,
@@ -81,7 +82,7 @@ class _MealsCategoryState extends State<MealsCategory> {
                             child: Stack(
                               children: [
                                 Container(
-                                  margin: EdgeInsets.symmetric(vertical: 5),
+                                  margin: EdgeInsets.symmetric(vertical: 5.h),
                                   child: Hero(
                                     tag: index.toString(),
                                     child: CachedNetworkImage(
@@ -91,8 +92,8 @@ class _MealsCategoryState extends State<MealsCategory> {
                                   ),
                                 ),
                                 Positioned(
-                                  bottom: 10,
-                                  left: 20,
+                                  bottom: 10.h,
+                                  left: 20.w,
                                   child: Container(
                                     child: Column(
                                       children: [
@@ -101,17 +102,17 @@ class _MealsCategoryState extends State<MealsCategory> {
                                               ['strMeal'],
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 20,
+                                              fontSize: 20.sp,
                                               fontWeight: FontWeight.bold),
                                         ),
                                         SizedBox(
-                                          height: 10,
+                                          height: 10.h,
                                         ),
                                         Row(
                                           children: [
                                             Container(
-                                              width: 5,
-                                              height: 5,
+                                              width: 5.w,
+                                              height: 5.h,
                                               decoration: BoxDecoration(
                                                   color: Colors.orange,
                                                   shape: BoxShape.circle),
@@ -120,7 +121,7 @@ class _MealsCategoryState extends State<MealsCategory> {
                                               widget.name,
                                               style: TextStyle(
                                                   color: Colors.grey,
-                                                  fontSize: 13,
+                                                  fontSize: 13.sp,
                                                   fontWeight: FontWeight.bold),
                                             ),
                                           ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
 import 'package:keyboard_visibility/keyboard_visibility.dart';
@@ -29,8 +30,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     KeyboardVisibilityNotification().addNewListener(
-      onChange: (bool visible) {
-        setState(() => keyboardOpen = visible);
+      onChange: ( visible) {
+       setState(() {
+         keyboardOpen=visible;
+       });
       },
     );
     super.initState();
@@ -72,7 +75,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
          provider.setSelectefIndex();
           },
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButtonLocation:   FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: Container(
           color: Colors.white,
           child: AnimatedBottomNavigationBar.builder(
@@ -85,12 +88,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 children: [
                   Icon(
                     iconList[index],
-                    size: 24,
+                    size: 24.sp,
                     color: color,
                   ),
-                  const SizedBox(height: 4),
+                   SizedBox(height: 4.h),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    padding:  EdgeInsets.symmetric(horizontal: 8.w),
                     child: Text(
                       '${textlist[index]}',
                       maxLines: 1,

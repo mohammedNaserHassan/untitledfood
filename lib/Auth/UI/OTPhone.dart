@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pinput/pin_put/pin_put.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Auth/UI/NewPassword.dart';
 import 'package:untitledfood/Providers/AuthProvider.dart';
@@ -17,7 +18,6 @@ class CodeMobile extends StatefulWidget {
 }
 
 class _CodeMobileState extends State<CodeMobile> {
-  final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
    return  Scaffold(
@@ -32,44 +32,41 @@ class _CodeMobileState extends State<CodeMobile> {
                   children: [
                     Container(
                         child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 30),
+                          margin: EdgeInsets.symmetric(horizontal: 30.w),
                             child: Text(
                               'We have  sent an OTP to',
-                              style: TextStyle(fontSize: 30),
+                              style: TextStyle(fontSize: 30.sp),
                             ))),
                     Center(child: Text('your Mobile', style: TextStyle(fontSize: 30))),
-                    SizedBox(height: 10,),
+                    SizedBox(height: 10.h,),
                     Container(
                         alignment: Alignment.center,
-                        margin: EdgeInsets.symmetric(horizontal: 30),
+                        margin: EdgeInsets.symmetric(horizontal: 30.w),
                         child: Text(
-                          'Please check your mobile number 071*****12',
+                          'Please check your mobile number 059*****20',
                           style: TextStyle(color: Colors.grey),
                         )),
                     Text(' continue to reset your password',style:TextStyle(color: Colors.grey) ,),
                     SizedBox(
-                      height: 20,
+                      height: 20.h,
                     ),
 
     Padding(
-    padding: const EdgeInsets.all(30.0),
-    child: PinPut(
-    fieldsCount: 6,
-    textStyle: const TextStyle(fontSize: 25.0, color: Colors.white),
-    eachFieldWidth: 50.0,
-    eachFieldHeight: 50.0,
+    padding:  EdgeInsets.all(30.w),
+    child: Pinput(
     focusNode: provider.pinPutFocusNode,
     controller: provider.pinPutController,
-    submittedFieldDecoration: provider.pinPutDecoration,
-    selectedFieldDecoration: provider.pinPutDecoration,
-    followingFieldDecoration: provider.pinPutDecoration,
+    // submittedFieldDecoration: provider.pinPutDecoration,
+    // selectedFieldDecoration: provider.pinPutDecoration,
+    // followingFieldDecoration: provider.pinPutDecoration,
+
     pinAnimationType: PinAnimationType.fade,
-      onSubmit: (pin) async {
+      onSubmitted: (pin) async {
           try {
           provider.sendPin(pin);
           } catch (e) {
             FocusScope.of(context).unfocus();
-            _scaffoldkey.currentState
+          provider.scaffoldkey.currentState
                 .showSnackBar(SnackBar(content: Text('invalid OTP')));
           }
       },
@@ -86,10 +83,10 @@ class _CodeMobileState extends State<CodeMobile> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        MyText(text: 'Didn\'nt Receive',verticall: 10),
+                        MyText(text: 'Didn\'nt Receive',verticall: 10.h),
                         TextButton(onPressed: (){
                           AppRouter.appRouter.gotoPagewithReplacment(LoginPage.routeName);
-                        }, child: Text('Click Here ',style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 15),))
+                        }, child: Text('Click Here ',style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 15.sp),))
                       ],
                     )
                   ])

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
 import 'package:untitledfood/Services/Router.dart';
@@ -25,7 +26,7 @@ class BottomSheetW extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 40),
+              margin: EdgeInsets.symmetric(horizontal: 40.w),
               child: Divider(
                 color: Colors.grey,
               ),
@@ -38,13 +39,13 @@ class BottomSheetW extends StatelessWidget {
               children: [
                 Text('Expiry'),
                 Container(
-                  width: 170,
+                  width: 170.w,
                   child: CustomTextField(
                     label: 'MM',
                   ),
                 ),
                 Container(
-                  width: 170,
+                  width: 170.w,
                   child: CustomTextField(
                     label: 'YY',
                   ),
@@ -61,7 +62,7 @@ class BottomSheetW extends StatelessWidget {
               label: 'Last Name',
             ),
             SizedBox(
-              height: 5,
+              height: 5.h,
             ),
             Row(
               children: [
@@ -70,7 +71,7 @@ class BottomSheetW extends StatelessWidget {
                   style: TextStyle(color: Colors.grey),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 130),
+                  margin: EdgeInsets.only(left: 130.w),
                   child: Switch(
                     value: provider.valueSwitch,
                     onChanged: (val) {
@@ -85,24 +86,24 @@ class BottomSheetW extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(80),
+                  borderRadius: BorderRadius.circular(80.sp),
                   color: Color(0xfffc6011)),
               width: double.infinity,
-              height: 50,
+              height: 50.h,
               margin: EdgeInsets.symmetric(
-                  vertical: 20, horizontal: 10),
+                  vertical: 20.h, horizontal: 10.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
                     Icons.add,
                     color: Colors.white,
-                    size: 30,
+                    size: 30.sp,
                   ),
                   Text(
                     'Add Card',
                     style: TextStyle(
-                        color: Colors.white, fontSize: 20),
+                        color: Colors.white, fontSize: 20.sp),
                   )
                 ],
               ),

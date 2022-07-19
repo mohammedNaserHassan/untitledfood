@@ -16,7 +16,7 @@ import 'package:untitledfood/Models/RegisterRequest.dart';
 import 'package:untitledfood/Services/Router.dart';
 import 'package:untitledfood/Services/customDialog.dart';
 import 'package:untitledfood/UIScreens/HomePage.dart';
-import 'package:untitledfood/UIScreens/Slider_one.dart';
+import 'package:untitledfood/UIScreens/Boarding/Slider_one.dart';
 
 class AuthProvider extends ChangeNotifier {
   /////////////////////////////////////////////Verify By Phone//////////////////////////////
@@ -41,7 +41,7 @@ class AuthProvider extends ChangeNotifier {
   }
 
   String verificationCode;
-
+  final GlobalKey<ScaffoldState> scaffoldkey = GlobalKey<ScaffoldState>();
   verifyPhone() async {
     await FirebaseAuth.instance.verifyPhoneNumber(
         phoneNumber: mobileNoController.text,
@@ -223,7 +223,8 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  updateProfile(BuildContext context) async {
+  updateProfile() async {
+    this.enable = false;
     RegisterRequest userModel = RegisterRequest(
       email: emailController.text,
       address: addressController.text,
@@ -236,10 +237,9 @@ class AuthProvider extends ChangeNotifier {
     if (passwordController.text == confirmController.text) {
       await fireStore_Helper.helper.updateProfile(userModel);
       getUserFromFirestore();
-      Toast.show('Successfully Updated', context);
-      this.enable = false;
+      Toast.show('Successfully Updated');
     } else {
-      Toast.show('You should write correctly password ', context);
+      Toast.show('You should write correctly password ');
     }
     notifyListeners();
   }

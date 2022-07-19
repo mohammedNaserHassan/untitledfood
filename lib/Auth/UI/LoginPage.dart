@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Auth/UI/ResetPassword.dart';
 import 'package:untitledfood/Auth/UI/SignupPage.dart';
@@ -27,17 +28,17 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                  margin: EdgeInsets.symmetric(vertical: 15),
+                  margin: EdgeInsets.symmetric(vertical: 15.h),
                   child: Center(
                       child: Text(
                     'Login',
-                    style: TextStyle(fontSize: 30),
+                    style: TextStyle(fontSize: 30.sp),
                   ))),
               Center(
                   child:
-                      MyText(text: 'Add your details to login', verticall: 5)),
+                      MyText(text: 'Add your details to login', verticall: 5.h)),
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
               CustomTextField(
                 label: 'Your Email',
@@ -61,8 +62,8 @@ class LoginPage extends StatelessWidget {
                     AppRouter.appRouter
                         .gotoPagewithReplacment(ResetPassword.routeName);
                   },
-                  child: MyText(text: 'Forget password?', verticall: 20)),
-              MyText(text: 'or Login with', verticall: 20),
+                  child: MyText(text: 'Forget password?', verticall: 20.h)),
+              MyText(text: 'or Login with', verticall: 20.h),
               TextButton(
                   onPressed: () async{
                     provider.handleLogin().then((value) =>
@@ -74,7 +75,7 @@ class LoginPage extends StatelessWidget {
                   },
                   child: Image.asset('Assets/Images/facebook.png')),
               SizedBox(
-                height: 10,
+                height: 10.h,
               ),
               TextButton(
                   onPressed: () async{
@@ -83,12 +84,12 @@ class LoginPage extends StatelessWidget {
                   },
                   child: Image.asset('Assets/Images/google.png')),
               SizedBox(
-                height: 80,
+                height: 80.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  MyText(text: 'Don\'t have an Account?', verticall: 10),
+                  MyText(text: 'Don\'t have an Account?', verticall: 10.h),
                   TextButton(
                       onPressed: () {
                         AppRouter.appRouter
@@ -99,7 +100,7 @@ class LoginPage extends StatelessWidget {
                         style: TextStyle(
                             color: Colors.red,
                             fontWeight: FontWeight.bold,
-                            fontSize: 15),
+                            fontSize: 15.sp),
                       ))
                 ],
               )

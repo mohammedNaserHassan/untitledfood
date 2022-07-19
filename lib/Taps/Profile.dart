@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/AuthProvider.dart';
 import 'package:untitledfood/Widgets/CustomButton.dart';
 import 'package:untitledfood/Widgets/TextfieldProfile.dart';
 
 class ProfileTab extends StatefulWidget {
-   ProfileTab();
+  ProfileTab();
 
   @override
   State<ProfileTab> createState() => _ProfileTabState();
@@ -15,13 +16,13 @@ class _ProfileTabState extends State<ProfileTab> {
   @override
   void initState() {
     super.initState();
-Provider.of<AuthProvider>(context,listen: false).fillControllers();
+    Provider.of<AuthProvider>(context, listen: false).fillControllers();
   }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<AuthProvider>(
-      builder: (context, provider,v) => Container(
+      builder: (context, provider, v) => Container(
         color: Colors.white,
         child: SingleChildScrollView(
           child: Column(
@@ -32,29 +33,29 @@ Provider.of<AuthProvider>(context,listen: false).fillControllers();
                 },
                 child: provider.file == null
                     ? Image.asset('Assets/Images/profile.png')
-                    : Image.file(
-                        provider.file,
-                        height: 120,
+                    : CircleAvatar(
+                        radius: 40.sp,
+                        backgroundImage: FileImage(provider.file),
                       ),
               ),
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   provider.setEnabled();
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
-                        Icons.edit,
-                        color: Color(0xfffc6011),
-                        size: 17,
-                      ),
+                      Icons.edit,
+                      color: Color(0xfffc6011),
+                      size: 17.sp,
+                    ),
                     SizedBox(
-                      width: 5,
+                      width: 5.w,
                     ),
                     Text(
                       'Edit profile',
-                      style: TextStyle(color: Color(0xfffc6011), fontSize: 10),
+                      style: TextStyle(color: Color(0xfffc6011), fontSize: 10.sp),
                     )
                   ],
                 ),
@@ -70,45 +71,51 @@ Provider.of<AuthProvider>(context,listen: false).fillControllers();
                   },
                   child: Text(
                     'Sign Out',
-                    style: TextStyle(color: Colors.grey, fontSize: 11),
+                    style: TextStyle(color: Colors.grey, fontSize: 11.sp),
                   )),
               TextfieldProfile(
-               controller:  provider.nameController,
+                controller: provider.nameController,
                 label: 'Name',
                 enabled: provider.enable,
               ),
               TextfieldProfile(
-                controller:  provider.emailController,
+                controller: provider.emailController,
                 label: 'Email',
                 enabled: false,
               ),
               TextfieldProfile(
-                controller:  provider.mobileNoController,
+                controller: provider.mobileNoController,
                 label: 'Mobile No',
                 enabled: false,
               ),
               TextfieldProfile(
-                controller:  provider.addressController,
+                controller: provider.addressController,
                 label: 'Address',
                 enabled: provider.enable,
               ),
               TextfieldProfile(
-                controller:  provider.passwordController,
+                controller: provider.passwordController,
                 label: 'Password',
                 enabled: provider.enable,
               ),
               TextfieldProfile(
-                controller:  provider.confirmController,
+                controller: provider.confirmController,
                 label: 'Confirm Password',
                 enabled: provider.enable,
               ),
               Visibility(
+                visible: !provider.enable,
+                child: SizedBox(
+                  height: 30.h,
+                ),
+              ),
+              Visibility(
                 visible: provider.enable,
                 child: Container(
-                    margin: EdgeInsets.only(bottom: 20),
+                    margin: EdgeInsets.only(bottom: 40.h),
                     child: CustomButton(
-                      function: (){
-                        provider.updateProfile(context);
+                      function: () {
+                        provider.updateProfile();
                       },
                       text: 'Save',
                       textcolor: Colors.white,

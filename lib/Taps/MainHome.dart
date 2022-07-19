@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/API/URLLauncher.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
@@ -27,14 +28,14 @@ class _MainHomeState extends State<MainHome> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                  margin: EdgeInsets.only(left: 20, top: 20),
+                  margin: EdgeInsets.only(left: 20.w, top: 20.h),
                   child: Text(
                     'Delivering to',
-                    style: TextStyle(fontSize: 12, color: Colors.grey),
+                    style: TextStyle(fontSize: 12.sp, color: Colors.grey),
                   )),
               Container(
-                margin: EdgeInsets.only(left: 20),
-                width: 200,
+                margin: EdgeInsets.only(left: 20.w),
+                width: 200.w,
                 child: MyDropDown(
                   hint: 'Current Location',
                   t1: 'Gaza',
@@ -79,7 +80,7 @@ class _MainHomeState extends State<MainHome> {
                       child: CircularProgressIndicator(),
                     )
                   : SizedBox(
-                      height: 220,
+                      height: 220.h,
                       child: ListView.builder(
                           physics: ClampingScrollPhysics(),
                           shrinkWrap: true,
@@ -91,7 +92,7 @@ class _MainHomeState extends State<MainHome> {
                                     .filteredPrductss[index]['strYoutube']);
                               },
                               child: SizedBox(
-                                width: 320,
+                                width: 320.w,
                                 child: Column(
                                   crossAxisAlignment:
                                       CrossAxisAlignment.stretch,
@@ -104,25 +105,25 @@ class _MainHomeState extends State<MainHome> {
                                         fit: BoxFit.cover,
                                       ),
                                       margin: EdgeInsets.symmetric(
-                                          vertical: 10, horizontal: 15),
-                                      width: 200,
-                                      height: 140,
+                                          vertical: 10.h, horizontal: 15.w),
+                                      width: 200.w,
+                                      height: 140.h,
                                       decoration: BoxDecoration(
                                           borderRadius:
-                                              BorderRadius.circular(15)),
+                                              BorderRadius.circular(15.sp)),
                                     ),
                                     Container(
-                                      margin: EdgeInsets.only(left: 15),
+                                      margin: EdgeInsets.only(left: 15.w),
                                       child: Text(
                                         provider.filteredPrducts[index]
                                             ['strMeal'],
                                         style: TextStyle(
-                                            fontSize: 16,
+                                            fontSize: 16.sp,
                                             fontWeight: FontWeight.bold),
                                       ),
                                     ),
                                     Container(
-                                      margin: EdgeInsets.only(left: 15),
+                                      margin: EdgeInsets.only(left: 15.w),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
@@ -135,9 +136,9 @@ class _MainHomeState extends State<MainHome> {
                                           ),
                                           Container(
                                             margin: EdgeInsets.symmetric(
-                                                horizontal: 5),
-                                            width: 3,
-                                            height: 3,
+                                                horizontal: 5.w),
+                                            width: 3.w,
+                                            height: 3.h,
                                             decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
                                                 color: Colors.deepOrange),
@@ -148,7 +149,7 @@ class _MainHomeState extends State<MainHome> {
                                                 TextStyle(color: Colors.grey),
                                           ),
                                           SizedBox(
-                                            width: 15,
+                                            width: 15.w,
                                           ),
                                           Icon(
                                             Icons.star,

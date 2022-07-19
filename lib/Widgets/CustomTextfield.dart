@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CustomTextField extends StatelessWidget {
   String label;
   TextInputType textInputType;
@@ -9,10 +10,10 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return   Container(
-      margin: EdgeInsets.symmetric(horizontal: 30,vertical: 10),
+      margin: EdgeInsets.symmetric(horizontal: 30.w,vertical: 10.h),
       decoration: BoxDecoration(
         color: Colors.grey.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(80),
+        borderRadius: BorderRadius.circular(80.sp),
       ),
       child: TextField(
         controller: textEditingController,
@@ -21,7 +22,7 @@ class CustomTextField extends StatelessWidget {
         decoration: InputDecoration(
           hintStyle: TextStyle(color: Colors.grey),
             hintText: label,
-            contentPadding: EdgeInsets.all(20),
+            contentPadding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 20.w),
             border: InputBorder.none
         ),
       ),
