@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
 import 'package:untitledfood/Services/Router.dart';
 
-import 'CustomTextfield.dart';
+import '../AuthComponents/CustomTextfield.dart';
 class BottomSheetW extends StatelessWidget {
   const BottomSheetW();
 
@@ -84,28 +84,33 @@ class BottomSheetW extends StatelessWidget {
                 )
               ],
             ),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(80.sp),
-                  color: Color(0xfffc6011)),
-              width: double.infinity,
-              height: 50.h,
-              margin: EdgeInsets.symmetric(
-                  vertical: 20.h, horizontal: 10.w),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.add,
-                    color: Colors.white,
-                    size: 30.sp,
-                  ),
-                  Text(
-                    'Add Card',
-                    style: TextStyle(
-                        color: Colors.white, fontSize: 20.sp),
-                  )
-                ],
+            GestureDetector(
+              onTap: (){
+                AppRouter.appRouter.back();
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(80.sp),
+                    color: Color(0xfffc6011)),
+                width: double.infinity,
+                height: 50.h,
+                margin: EdgeInsets.symmetric(
+                    vertical: 20.h, horizontal: 10.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.add,
+                      color: Colors.white,
+                      size: 30.sp,
+                    ),
+                    Text(
+                      'Add Card',
+                      style: TextStyle(
+                          color: Colors.white, fontSize: 20.sp),
+                    )
+                  ],
+                ),
               ),
             ),
           ],

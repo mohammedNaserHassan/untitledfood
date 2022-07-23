@@ -6,9 +6,11 @@ import 'package:untitledfood/Auth/UI/SignupPage.dart';
 import 'package:untitledfood/Providers/AuthProvider.dart';
 import 'package:untitledfood/Services/Router.dart';
 import 'package:untitledfood/UIScreens/HomePage.dart';
-import 'package:untitledfood/Widgets/CustomButton.dart';
-import 'package:untitledfood/Widgets/CustomText.dart';
-import 'package:untitledfood/Widgets/CustomTextfield.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomButton.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomText.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomTextfield.dart';
+
+import '../../Widgets/AuthComponents/BottomRow.dart';
 
 class LoginPage extends StatelessWidget {
   static final routeName = 'Login';
@@ -86,24 +88,9 @@ class LoginPage extends StatelessWidget {
               SizedBox(
                 height: 80.h,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MyText(text: 'Don\'t have an Account?', verticall: 10.h),
-                  TextButton(
-                      onPressed: () {
-                        AppRouter.appRouter
-                            .gotoPagewithReplacment(SignupPage.routeName);
-                      },
-                      child: Text(
-                        'Sign Up',
-                        style: TextStyle(
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15.sp),
-                      ))
-                ],
-              )
+              BottomRow(title: 'Don\'t have an Account?',bottonString:  'Sign Up',function: () {
+                AppRouter.appRouter
+                    .gotoPagewithReplacment(SignupPage.routeName);},)
             ],
           ),
         ),
@@ -111,3 +98,4 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
+

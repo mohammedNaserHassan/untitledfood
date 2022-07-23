@@ -5,11 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
+import 'package:untitledfood/Services/Router.dart';
 import 'package:untitledfood/UIScreens/HomePage.dart';
 import 'package:untitledfood/UIScreens/MealDetails.dart';
-import 'package:untitledfood/Widgets/CardIcon.dart';
-import 'package:untitledfood/Widgets/GoBack.dart';
-import 'package:untitledfood/Widgets/SearchWidget.dart';
+import 'package:untitledfood/Widgets/GeneralComponents/CardIcon.dart';
+import 'package:untitledfood/Widgets/GeneralComponents/GoBack.dart';
+import 'package:untitledfood/Widgets/GeneralComponents/SearchWidget.dart';
 
 class MealsCategory extends StatefulWidget {
   static final routeName = 'MealsCat';
@@ -61,17 +62,11 @@ class _MealsCategoryState extends State<MealsCategory> {
                         itemCount: provider.categoryProducts.length,
                         itemBuilder: (context, index) => GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                PageRouteBuilder(
-                                transitionDuration: Duration(seconds: 2),
-                            pageBuilder: (_, __, ___) =>MealDetails(
-                                  tag: index.toString(),
-                                      id: provider.categoryProducts[index]
-                                          ['idMeal'],
-                                    )
-                                )
-                            );
+                            AppRouter.appRouter.goesWithInternalAnimation(MealDetails(
+                              tag: index.toString(),
+                              id: provider.categoryProducts[index]
+                              ['idMeal'],
+                            ));
                           },
 
                           child: AnimatedCard(

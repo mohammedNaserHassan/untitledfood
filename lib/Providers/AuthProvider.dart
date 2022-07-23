@@ -42,6 +42,7 @@ class AuthProvider extends ChangeNotifier {
 
   String verificationCode;
   final GlobalKey<ScaffoldState> scaffoldkey = GlobalKey<ScaffoldState>();
+
   verifyPhone() async {
     await FirebaseAuth.instance.verifyPhoneNumber(
         phoneNumber: mobileNoController.text,
@@ -100,26 +101,38 @@ class AuthProvider extends ChangeNotifier {
 /////Sign up//////////////////////////////
 
   register() async {
-    try {
-      UserCredential userCredential = await Auth_helper.auth_helper
-          .signup(emailController.text, passwordController.text);
-      RegisterRequest registerRequest = RegisterRequest(
-          id: Auth_helper.auth_helper.getUserId(),
-          password: passwordController.text,
-          address: addressController.text,
-          Confirmpassword: confirmController.text,
-          name: nameController.text,
-          email: emailController.text,
-          mobileNo: mobileNoController.text);
-      await fireStore_Helper.helper.addUserToFireBase(registerRequest);
-      await Auth_helper.auth_helper.vereifyEmail();
-      await Auth_helper.auth_helper.signOut();
-      AppRouter.appRouter.gotoPagewithReplacment(LoginPage.routeName);
-    } on Exception catch (e) {
-      print(e);
+    if (nameController.text.length != 0 &&
+        emailController.text.length != 0 &&
+        mobileNoController.text.length != 0 &&
+        addressController.text.length != 0 &&
+        passwordController.text.length != 0 &&
+        confirmController.text.length != 0) {
+      if (passwordController.text == confirmController.text) {
+        try {
+          UserCredential userCredential = await Auth_helper.auth_helper
+              .signup(emailController.text, passwordController.text);
+          RegisterRequest registerRequest = RegisterRequest(
+              id: Auth_helper.auth_helper.getUserId(),
+              password: passwordController.text,
+              address: addressController.text,
+              Confirmpassword: confirmController.text,
+              name: nameController.text,
+              email: emailController.text,
+              mobileNo: mobileNoController.text);
+          await fireStore_Helper.helper.addUserToFireBase(registerRequest);
+          await Auth_helper.auth_helper.signOut();
+          AppRouter.appRouter.gotoPagewithReplacment(LoginPage.routeName);
+          clearController();
+        } on Exception catch (e) {
+          print(e);
+        }
+      } else {
+        CustomDialog.customDialog.showCustom('Your password not conform');
+      }
+    } else {
+      CustomDialog.customDialog
+          .showCustom('Please , fill all fields to register');
     }
-
-    // clearController();
     notifyListeners();
   }
 
@@ -127,18 +140,15 @@ class AuthProvider extends ChangeNotifier {
 
   //////Login////////////////////////////////////
   login() async {
-    UserCredential userCredential = await Auth_helper.auth_helper
-        .signin(emailController.text, passwordController.text);
+    if (emailController.text.length != 0 &&
+        passwordController.text.length != 0) {
+      UserCredential userCredential = await Auth_helper.auth_helper
+          .signin(emailController.text, passwordController.text);
 
-    await fireStore_Helper.helper.getUserFromFirestore();
-    bool isVerified = Auth_helper.auth_helper.checkEmailVerification();
-    print(isVerified);
-    if (isVerified) {
-      AppRouter.appRouter.gotoPagewithReplacment(HomePage.routeName);
+      await fireStore_Helper.helper.getUserFromFirestore();
+      AppRouter.appRouter.goWithInternalAnimation(HomePage());
     } else {
-      CustomDialog.customDialog.showCustom(
-          'You have to verify your email,press ok to send another email',
-          sendVerification);
+      CustomDialog.customDialog.showCustom('Email or password is empty');
     }
 
     // clearController();
@@ -352,6 +362,7 @@ class AuthProvider extends ChangeNotifier {
 //////////////////Sign out////////////////////////////////////
   logOut() async {
     await Auth_helper.auth_helper.signOut();
+    clearController();
     AppRouter.appRouter.gotoPagewithReplacment(MainAuth.routeName);
   }
 /////////////////////

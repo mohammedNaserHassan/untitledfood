@@ -6,8 +6,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
-import 'package:untitledfood/Widgets/BottomSheet.dart';
-import 'package:untitledfood/Widgets/CustomButton.dart';
+import 'package:untitledfood/Widgets/GeneralComponents/BottomSheet.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomButton.dart';
 
 class PaymentDetails extends StatelessWidget {
   const PaymentDetails();

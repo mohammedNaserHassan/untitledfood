@@ -7,7 +7,7 @@ import 'package:untitledfood/UIScreens/More/InboxScreen.dart';
 import 'package:untitledfood/UIScreens/More/MyOrders.dart';
 import 'package:untitledfood/UIScreens/More/NotificationScreen.dart';
 import 'package:untitledfood/UIScreens/More/PaymentDetails.dart';
-import 'package:untitledfood/Widgets/MoreWidget.dart';
+import 'package:untitledfood/Widgets/Custom/MoreWidget.dart';
 class MoreTab extends StatelessWidget {
   const MoreTab();
 

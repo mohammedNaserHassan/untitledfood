@@ -12,13 +12,13 @@ class ListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<MyProvider>(
-      builder: (contexy, provider, v) => SizedBox(
-        height: MediaQuery.of(context).size.height * 0.71,
-        child: provider.filteredPrducts == null
+      builder: (contexy, provider, v) =>  provider.filteredPrducts == null
             ? Center(
                 child: CircularProgressIndicator(),
               )
             : ListView.builder(
+          shrinkWrap: true,
+          physics: BouncingScrollPhysics(),
           scrollDirection:axisDirection,
                 itemCount: provider.length,
                 itemBuilder: (context, index) => GestureDetector(
@@ -79,7 +79,6 @@ class ListItem extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
       ),
     );
   }

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'UIScreens/SplachScreen.dart';
 
 class App extends StatefulWidget {
-  // Create the initialization Future outside of `build`:
   @override
   _AppState createState() => _AppState();
 }

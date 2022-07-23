@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
+import 'package:untitledfood/Services/Router.dart';
 import 'package:untitledfood/UIScreens/MealsCategory.dart';
-import 'package:untitledfood/Widgets/SearchWidget.dart';
+import 'package:untitledfood/Widgets/GeneralComponents/SearchWidget.dart';
 
 class MenuTab extends StatelessWidget {
   MenuTab();
@@ -51,13 +52,11 @@ class MenuTab extends StatelessWidget {
                             itemCount: provider.allCategories.length,
                             itemBuilder: (context, index) => GestureDetector(
                               onTap: () {
-                                Navigator.of(context)
-                                    .pushReplacement(MaterialPageRoute(
-                                        builder: (_) => MealsCategory(
-                                              name:
-                                                  provider.allCategories[index]
-                                                      ['strCategory'],
-                                            )));
+                                AppRouter.appRouter.goWithInternalAnimation(MealsCategory(
+                                  name:
+                                  provider.allCategories[index]
+                                  ['strCategory'],
+                                ));
                               },
                               child: Stack(
                                 fit: StackFit.passthrough,

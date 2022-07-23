@@ -4,9 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:untitledfood/Auth/UI/LoginPage.dart';
 import 'package:untitledfood/Providers/AuthProvider.dart';
 import 'package:untitledfood/Services/Router.dart';
-import 'package:untitledfood/Widgets/CustomButton.dart';
-import 'package:untitledfood/Widgets/CustomText.dart';
-import 'package:untitledfood/Widgets/CustomTextfield.dart';
+import 'package:untitledfood/Widgets/AuthComponents/BottomRow.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomButton.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomText.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomTextfield.dart';
 
 class SignupPage extends StatelessWidget {
   static final routeName = 'signUp';
@@ -72,24 +73,10 @@ class SignupPage extends StatelessWidget {
                   provider.register();
                 },
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MyText(text: 'Already have an Account?', verticall: 10.h),
-                  TextButton(
-                      onPressed: () {
-                        AppRouter.appRouter
-                            .gotoPagewithReplacment(LoginPage.routeName);
-                      },
-                      child: Text(
-                        'Login ',
-                        style: TextStyle(
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15.sp),
-                      ))
-                ],
-              )
+              BottomRow(function:() {
+                AppRouter.appRouter
+                    .gotoPagewithReplacment(LoginPage.routeName);
+              },title:'Already have an Account?' ,bottonString: 'Login ',)
             ],
           ),
         ),

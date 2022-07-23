@@ -12,12 +12,27 @@ import 'package:untitledfood/Taps/Profile.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:map_launcher/map_launcher.dart' as MapLuncher;
 
+import '../Models/Meal.dart';
+
 class MyProvider extends ChangeNotifier {
   MyProvider() {
     getMyLocation();
   }
-
-/////Get All Categores////////////////
+bool isShopping =false;
+  setShopping(bool state){
+    int x = selectedIndex;
+    if(state){
+      isShopping=true;
+      titleScaffod ='Card';
+    }
+    else{
+      isShopping=false;
+      onChangeTab(x);
+      notifyListeners();
+    }
+    notifyListeners();
+  }
+/////Get All Categories////////////////
   List<dynamic> allCategories;
 
   getAllCategories() async {

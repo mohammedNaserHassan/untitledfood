@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitledfood/Auth/UI/LoginPage.dart';
 import 'package:untitledfood/Auth/UI/SignupPage.dart';
 import 'package:untitledfood/Services/Router.dart';
-import 'package:untitledfood/Widgets/CustomButton.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomButton.dart';
 
 class MainAuth extends StatelessWidget {
   static final routeName = 'Auth';

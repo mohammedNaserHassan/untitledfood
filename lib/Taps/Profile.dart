@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/AuthProvider.dart';
-import 'package:untitledfood/Widgets/CustomButton.dart';
-import 'package:untitledfood/Widgets/TextfieldProfile.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomButton.dart';
+import 'package:untitledfood/Widgets/Custom/TextfieldProfile.dart';
 
 class ProfileTab extends StatefulWidget {
   ProfileTab();

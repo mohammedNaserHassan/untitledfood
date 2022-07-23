@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitledfood/Services/Router.dart';
 import 'package:untitledfood/UIScreens/Boarding/Slider_one.dart';
-import 'package:untitledfood/Widgets/CustomButton.dart';
-import 'package:untitledfood/Widgets/CustomTextfield.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomButton.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomTextfield.dart';
 
 class NewPassword extends StatelessWidget {
   static final routeName = 'NewPassword';

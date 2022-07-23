@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitledfood/Services/Router.dart';
 
-import 'package:untitledfood/Widgets/CustomButton.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomButton.dart';
 
 import 'Slider_three.dart';
 class Slider_two extends StatelessWidget {

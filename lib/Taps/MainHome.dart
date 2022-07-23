@@ -4,9 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/API/URLLauncher.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
-import 'package:untitledfood/Widgets/ListItem.dart';
-import 'package:untitledfood/Widgets/SearchWidget.dart';
-import 'package:untitledfood/Widgets/myDropDown.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomText.dart';
+import 'package:untitledfood/Widgets/Custom/ListItem.dart';
+import 'package:untitledfood/Widgets/GeneralComponents/SearchWidget.dart';
+import 'package:untitledfood/Widgets/GeneralComponents/myDropDown.dart';
+
+import '../Widgets/Custom/CustomTile.dart';
 
 class MainHome extends StatefulWidget {
   static final routeName = 'Main Home';
@@ -27,12 +30,12 @@ class _MainHomeState extends State<MainHome> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                  margin: EdgeInsets.only(left: 20.w, top: 20.h),
-                  child: Text(
-                    'Delivering to',
-                    style: TextStyle(fontSize: 12.sp, color: Colors.grey),
-                  )),
+              MyText(
+               text: 'Delivering to',
+                verticall: 20,
+                horizontal: 20,
+
+              ),
               Container(
                 margin: EdgeInsets.only(left: 20.w),
                 width: 200.w,
@@ -46,35 +49,13 @@ class _MainHomeState extends State<MainHome> {
               SearchWidget(
                 label: 'Search food',
               ),
-              ListTile(
-                title: Text('Popular Restaurants'),
-                trailing: TextButton(
-                  onPressed: () {
-                    provider.setLength(12);
-                  },
-                  child: Text(
-                    'View All',
-                    style: TextStyle(color: Colors.deepOrangeAccent),
-                  ),
-                ),
-              ),
+              CustomTile(function:    provider.setLength(12),text: 'View All' ),
               provider.allCategories == null
                   ? CircularProgressIndicator()
                   : ListItem(
                       axisDirection: Axis.vertical,
                     ),
-              ListTile(
-                title: Text('Most Popular'),
-                trailing: TextButton(
-                  onPressed: () {
-                    provider.setLengthD(10);
-                  },
-                  child: Text(
-                    'View All',
-                    style: TextStyle(color: Colors.deepOrangeAccent),
-                  ),
-                ),
-              ),
+              CustomTile(text: 'Most Popular',function:  provider.setLengthD(10) ,),
               provider.filteredPrductss == null
                   ? Center(
                       child: CircularProgressIndicator(),
@@ -167,18 +148,7 @@ class _MainHomeState extends State<MainHome> {
                                 ),
                               ))),
                     ),
-              ListTile(
-                title: Text('Recent Items'),
-                trailing: TextButton(
-                  onPressed: () {
-                    provider.setLengthC(8);
-                  },
-                  child: Text(
-                    'View All',
-                    style: TextStyle(color: Colors.deepOrangeAccent),
-                  ),
-                ),
-              ),
+              CustomTile(text:'Recent Items' ,function: provider.setLengthC(8),)
             ],
           ),
         ),
@@ -186,3 +156,4 @@ class _MainHomeState extends State<MainHome> {
     );
   }
 }
+

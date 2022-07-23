@@ -6,8 +6,11 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
-import 'package:untitledfood/Widgets/CardIcon.dart';
-import 'package:untitledfood/Widgets/myDropDown.dart';
+import 'package:untitledfood/Widgets/GeneralComponents/CardIcon.dart';
+import 'package:untitledfood/Widgets/GeneralComponents/myDropDown.dart';
+import 'package:untitledfood/Widgets/Custom/customIconDetails.dart';
+
+import '../Widgets/Custom/Ingredient.dart';
 
 class MealDetails extends StatefulWidget {
   static final routeName = 'Details';
@@ -23,7 +26,6 @@ class MealDetails extends StatefulWidget {
 class _MealDetailsState extends State<MealDetails> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Provider.of<MyProvider>(context, listen: false)
         .getSpecificProduct(widget.id);
@@ -65,6 +67,9 @@ class _MealDetailsState extends State<MealDetails> {
                         right: 20.w,
                         child: CardIcon(
                           color: Colors.white,
+                          function: () {
+                            provider.setShopping(true);
+                          },
                         )),
                     Positioned(
                         top: 370.h,
@@ -146,87 +151,7 @@ class _MealDetailsState extends State<MealDetails> {
                                           fontSize: 20.sp,
                                           fontWeight: FontWeight.bold),
                                     )),
-                                Container(
-                                    margin:
-                                        EdgeInsets.only(top: 10.h, left: 20.w),
-                                    child: Text(
-                                      provider.selectedProduct.strIngredient1 ??
-                                          '' +
-                                              '\t,' +
-                                              provider.selectedProduct
-                                                  .strIngredient2 ??
-                                          '' +
-                                              '\t,' +
-                                              provider.selectedProduct
-                                                  .strIngredient3 ??
-                                          '' +
-                                              '\t,' +
-                                              provider.selectedProduct
-                                                  .strIngredient4 ??
-                                          '' +
-                                              '\t,' +
-                                              provider.selectedProduct
-                                                  .strIngredient5 ??
-                                          '' +
-                                              '\t,' +
-                                              provider.selectedProduct
-                                                  .strIngredient6 ??
-                                          '' +
-                                              '\t,' +
-                                              provider.selectedProduct
-                                                  .strIngredient7 ??
-                                          '' +
-                                              '\t,' +
-                                              provider.selectedProduct
-                                                  .strIngredient8 ??
-                                          '' +
-                                              '\t,' +
-                                              provider.selectedProduct
-                                                  .strIngredient9 ??
-                                          '' +
-                                              '\t,' +
-                                              provider.selectedProduct
-                                                  .strIngredient10 ??
-                                          '' +
-                                              provider.selectedProduct
-                                                  .strIngredient11 ??
-                                          '' +
-                                              '\t,' +
-                                              provider.selectedProduct
-                                                  .strIngredient12 ??
-                                          '' +
-                                              '\t,' +
-                                              provider.selectedProduct
-                                                  .strIngredient13 ??
-                                          '' +
-                                              '\t,' +
-                                              provider.selectedProduct
-                                                  .strIngredient14 ??
-                                          '' +
-                                              '\t,' +
-                                              provider.selectedProduct
-                                                  .strIngredient15 ??
-                                          '' +
-                                              '\t,' +
-                                              provider.selectedProduct
-                                                  .strIngredient16 ??
-                                          '' +
-                                              '\t,' +
-                                              provider.selectedProduct
-                                                  .strIngredient17 ??
-                                          '' +
-                                              '\t,' +
-                                              provider.selectedProduct
-                                                  .strIngredient18 ??
-                                          '' +
-                                              '\t,' +
-                                              provider.selectedProduct
-                                                  .strIngredient19 ??
-                                          '' + '\t,',
-                                      style: TextStyle(
-                                          fontSize: 12, color: Colors.grey),
-                                    )),
-                                //
+                                Ingredient(provider.selectedProduct),
                                 Container(
                                     padding:
                                         EdgeInsets.symmetric(horizontal: 10.w),
@@ -255,23 +180,9 @@ class _MealDetailsState extends State<MealDetails> {
                                             fontWeight: FontWeight.bold,
                                             fontSize: 17.sp),
                                       ),
-                                      Container(
-                                        margin: EdgeInsets.only(left: 10.w),
-                                        child: IconButton(
-                                            onPressed: () {
-                                              provider.decrement();
-                                            },
-                                            icon: Icon(
-                                              Icons.remove,
-                                              color: Colors.white,
-                                              size: 15.sp,
-                                            )),
-                                        width: 60.w,
-                                        height: 30.h,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(30.sp),
-                                            color: Colors.deepOrangeAccent),
+                                      CustomIconDetails(
+                                        function: provider.decrement(),
+                                        iconData: Icons.remove,
                                       ),
                                       Container(
                                         child: Center(
@@ -289,23 +200,10 @@ class _MealDetailsState extends State<MealDetails> {
                                             border: Border.all(
                                                 color: Colors.deepOrange)),
                                       ),
-                                      Container(
-                                        child: IconButton(
-                                            onPressed: () {
-                                              provider.increment();
-                                            },
-                                            icon: Icon(
-                                              Icons.add,
-                                              color: Colors.white,
-                                              size: 12.sp,
-                                            )),
-                                        width: 60.w,
-                                        height: 30.h,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(30.sp),
-                                            color: Colors.deepOrangeAccent),
-                                      ),
+                                      CustomIconDetails(
+                                        function: provider.increment(),
+                                        iconData: Icons.add,
+                                      )
                                     ],
                                   ),
                                 ),

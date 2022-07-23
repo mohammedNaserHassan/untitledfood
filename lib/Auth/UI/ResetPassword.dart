@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/AuthProvider.dart';
-import 'package:untitledfood/Widgets/CustomButton.dart';
-import 'package:untitledfood/Widgets/CustomTextfield.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomButton.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomText.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomTextfield.dart';
 
 class ResetPassword extends StatelessWidget {
   static final routeName = 'Password';
@@ -32,10 +33,9 @@ class ResetPassword extends StatelessWidget {
                 Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.symmetric(horizontal: 74.w),
-                child: Text(
-                  'Please enter your email to receive a link to create a new password via email',
-                  style: TextStyle(color: Colors.grey),
-                )),
+                child: MyText(
+                 text: 'Please enter your email to receive a link to create a new password via email',verticall: 10,),
+                ),
                 SizedBox(
               height: 20.h,
                 ),

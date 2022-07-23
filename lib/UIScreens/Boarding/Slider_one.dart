@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
 import 'package:untitledfood/Services/Router.dart';
-import 'package:untitledfood/Widgets/CustomButton.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomButton.dart';
 
 import 'Slider_two.dart';
 class Slider_one extends StatelessWidget {
@@ -24,7 +24,7 @@ class Slider_one extends StatelessWidget {
           },
             textcolor: Colors.white,
             fill: Color(0xfffc6011),
-          )
+          ),
         ],
       ),
     );

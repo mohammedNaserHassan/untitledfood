@@ -38,47 +38,48 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(
-      context,
-      designSize: Size(360, 690),
-    );
-    return MaterialApp(
-      theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          appBarTheme: AppBarTheme(
-              iconTheme: IconThemeData(color: Colors.black),
-              titleTextStyle: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-              backwardsCompatibility: false,
-              systemOverlayStyle: SystemUiOverlayStyle(
-                  statusBarColor: Colors.white,
-                  statusBarIconBrightness: Brightness.dark),
-              backgroundColor: Colors.white,
-              elevation: 0)),
-      debugShowCheckedModeBanner: false,
-      routes: {
-        SplachScreen.routeName: (_) => SplachScreen(),
-        MainAuth.routeName: (_) => MainAuth(),
-        LoginPage.routeName: (_) => LoginPage(),
-        SignupPage.routeName: (_) => SignupPage(),
-        ResetPassword.routeName: (_) => ResetPassword(),
-        CodeMobile.routeName: (_) => CodeMobile(),
-        NewPassword.routeName: (_) => NewPassword(),
-        Slider_one.routeName: (_) => Slider_one(),
-        Slider_two.routeName: (_) => Slider_two(),
-        Slider_three.routeName: (_) => Slider_three(),
-        HomePage.routeName: (_) => HomePage(),
-        MealsCategory.routeName: (_) => MealsCategory(),
-        MealDetails.routeName: (_) => MealDetails(),
-        MainHome.routeName: (_) => MainHome(),
+    return ScreenUtilInit(
+      designSize: const Size(392.7, 834.9),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          theme: ThemeData(
+              scaffoldBackgroundColor: Colors.white,
+              appBarTheme: AppBarTheme(
+                  iconTheme: IconThemeData(color: Colors.black),
+                  titleTextStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                  backwardsCompatibility: false,
+                  systemOverlayStyle: SystemUiOverlayStyle(
+                      statusBarColor: Colors.white,
+                      statusBarIconBrightness: Brightness.dark),
+                  backgroundColor: Colors.white,
+                  elevation: 0)),
+          debugShowCheckedModeBanner: false,
+          routes: {
+            SplachScreen.routeName: (_) => SplachScreen(),
+            MainAuth.routeName: (_) => MainAuth(),
+            LoginPage.routeName: (_) => LoginPage(),
+            SignupPage.routeName: (_) => SignupPage(),
+            ResetPassword.routeName: (_) => ResetPassword(),
+            CodeMobile.routeName: (_) => CodeMobile(),
+            NewPassword.routeName: (_) => NewPassword(),
+            Slider_one.routeName: (_) => Slider_one(),
+            Slider_two.routeName: (_) => Slider_two(),
+            Slider_three.routeName: (_) => Slider_three(),
+            HomePage.routeName: (_) => HomePage(),
+            MealsCategory.routeName: (_) => MealsCategory(),
+            MealDetails.routeName: (_) => MealDetails(),
+            MainHome.routeName: (_) => MainHome(),
+          },
+          home: App(),
+          navigatorKey: AppRouter.appRouter.navkey,
+        );
       },
-      home: App(),
-      navigatorKey: AppRouter.appRouter.navkey,
     );
   }
 }
 
-// Todo
-// Format MealDetails.Dart

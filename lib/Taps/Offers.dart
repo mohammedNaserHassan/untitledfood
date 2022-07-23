@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/API/URLLauncher.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
-import 'package:untitledfood/Widgets/CustomButton.dart';
+import 'package:untitledfood/Widgets/AuthComponents/CustomButton.dart';
 
 class OffersTab extends StatelessWidget {
   OffersTab();
@@ -33,13 +33,13 @@ class OffersTab extends StatelessWidget {
                     textcolor: Colors.white,
                     fill: Color(0xfffc6011),
                   )),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.71,
-                child: provider.filteredPrducts == null
+        provider.filteredPrducts == null
                     ? Center(
                         child: CircularProgressIndicator(),
                       )
                     : ListView.builder(
+          shrinkWrap: true,
+                        physics: BouncingScrollPhysics(),
                         itemCount: provider.filteredPrducts.length,
                         itemBuilder: (context, index) => GestureDetector(
                           onTap: () async {
@@ -67,7 +67,6 @@ class OffersTab extends StatelessWidget {
                           ),
                         ),
                       ),
-              )
             ],
           ),
         ),
