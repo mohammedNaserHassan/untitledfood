@@ -15,30 +15,28 @@ class InboxSecreen extends StatelessWidget {
             ListTile(title: Text('Inbox'),leading: IconButton(
                 onPressed: (){provider.changeStates(3);},
                 icon: Icon(Icons.arrow_back_ios)),),
-            SizedBox(
-              height: 600.h,
-              child: ListView.builder(
-                itemCount: 6,
-                itemBuilder: (context,index){
-                  return Container(
-                    color: index%2==0?Colors.white:Colors.grey.withOpacity(0.3),
-                    child: Column(
-                      children: [
-                        ListTile(
-                          title: Text('MealMonkey Promotions'),
-                          subtitle: Text('Lorem ipsum dolor sit',style: TextStyle(color: Colors.grey),),
-                          leading: CircleAvatar(backgroundColor: Colors.deepOrange,radius: 5.sp,),
-                          trailing: Text('${index+1}th July',style: TextStyle(color: Colors.grey),),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(bottom: 5.h),
-                            alignment: Alignment.bottomRight,
-                            child: Icon(Icons.star_border_outlined,color: Colors.deepOrange,))
-                      ],
-                    ),
-                  );
-                },
-              ),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: 6,
+              itemBuilder: (context,index){
+                return Container(
+                  height: 100.h,
+                  color: index%2==0?Colors.white:Colors.grey.withOpacity(0.3),
+                  child: Column(
+                    children: [
+                      ListTile(
+                        title: Text('MealMonkey Promotions'),
+                        subtitle: Text('Lorem ipsum dolor sit',style: TextStyle(color: Colors.grey),),
+                        leading: CircleAvatar(backgroundColor: Colors.deepOrange,radius: 5.sp,),
+                        trailing: Text('${index+1}th July',style: TextStyle(color: Colors.grey),),
+                      ),
+                      Container(
+                          alignment: Alignment.bottomRight,
+                          child: Icon(Icons.star_border_outlined,color: Colors.deepOrange,))
+                    ],
+                  ),
+                );
+              },
             ),
           ],
         ),

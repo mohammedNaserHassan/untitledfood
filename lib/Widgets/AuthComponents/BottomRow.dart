@@ -12,7 +12,7 @@ class BottomRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        MyText(text: title, verticall: 10.h),
+        CustomText(text: title, verticall: 10.h),
         TextButton(
             onPressed: function,
             child: Text(

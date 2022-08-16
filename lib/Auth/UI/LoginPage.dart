@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Auth/UI/ResetPassword.dart';
 import 'package:untitledfood/Auth/UI/SignupPage.dart';
+import 'package:untitledfood/UIScreens/HomePageTabs.dart';
 import 'package:untitledfood/Providers/AuthProvider.dart';
 import 'package:untitledfood/Services/Router.dart';
-import 'package:untitledfood/UIScreens/HomePage.dart';
 import 'package:untitledfood/Widgets/AuthComponents/CustomButton.dart';
 import 'package:untitledfood/Widgets/AuthComponents/CustomText.dart';
 import 'package:untitledfood/Widgets/AuthComponents/CustomTextfield.dart';
@@ -38,7 +38,7 @@ class LoginPage extends StatelessWidget {
                   ))),
               Center(
                   child:
-                      MyText(text: 'Add your details to login', verticall: 5.h)),
+                      CustomText(text: 'Add your details to login', verticall: 5.h)),
               SizedBox(
                 height: 20.h,
               ),
@@ -64,13 +64,13 @@ class LoginPage extends StatelessWidget {
                     AppRouter.appRouter
                         .gotoPagewithReplacment(ResetPassword.routeName);
                   },
-                  child: MyText(text: 'Forget password?', verticall: 20.h)),
-              MyText(text: 'or Login with', verticall: 20.h),
+                  child: CustomText(text: 'Forget password?', verticall: 20.h)),
+              CustomText(text: 'or Login with', verticall: 20.h),
               TextButton(
                   onPressed: () async{
                     provider.handleLogin().then((value) =>
                     provider.isSignIn?
-                        AppRouter.appRouter.gotoPagewithReplacment(HomePage.routeName):
+                        AppRouter.appRouter.gotoPagewithReplacment(HomePageTabs.routeName):
                     null
                     );
 

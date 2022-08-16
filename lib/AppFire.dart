@@ -25,6 +25,7 @@ class _AppState extends State<App> {
             ),
           );
         }
+        // if all Done!!!
         if (snapshot.connectionState == ConnectionState.done) {
           return Scaffold(
             body: SplachScreen(),

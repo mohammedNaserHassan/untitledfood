@@ -33,7 +33,7 @@ class ResetPassword extends StatelessWidget {
                 Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.symmetric(horizontal: 74.w),
-                child: MyText(
+                child: CustomText(
                  text: 'Please enter your email to receive a link to create a new password via email',verticall: 10,),
                 ),
                 SizedBox(

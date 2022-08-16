@@ -27,12 +27,12 @@ class MenuTab extends StatelessWidget {
                 children: [
                   Positioned(
                     top: 0.h,
-                    bottom: 20.h,
+                    bottom: 85.h,
                     left: 0.w,
                     child: Container(
                       margin: EdgeInsets.symmetric(vertical: 20.h),
                       width: 100.w,
-                      height: 570.h,
+                      height: 500.h,
                       decoration: BoxDecoration(
                           color: Colors.deepOrangeAccent,
                           borderRadius: BorderRadius.only(
@@ -42,20 +42,20 @@ class MenuTab extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 40.h,
-                    bottom: 20.h,
+                    bottom: 115.h,
+                    top: 15.h,
                     left: 10.w,
                     right: 10.w,
                     child: provider.allCategories == null
-                        ? CircularProgressIndicator()
+                        ? Center(child: CircularProgressIndicator())
                         : ListView.builder(
                             itemCount: provider.allCategories.length,
                             itemBuilder: (context, index) => GestureDetector(
                               onTap: () {
-                                AppRouter.appRouter.goWithInternalAnimation(MealsCategory(
+                                AppRouter.appRouter
+                                    .goWithInternalAnimation(MealsCategory(
                                   name:
-                                  provider.allCategories[index]
-                                  ['strCategory'],
+                                      provider.allCategories[index].strCategory,
                                 ));
                               },
                               child: Stack(
@@ -78,11 +78,11 @@ class MenuTab extends StatelessWidget {
                                             topRight: Radius.circular(15.sp),
                                           )),
                                       child: Container(
-                                        margin:
-                                            EdgeInsets.only(top: 15.h, left: 70.w),
+                                        margin: EdgeInsets.only(
+                                            top: 15.h, left: 70.w),
                                         child: Text(
-                                          provider.allCategories[index]
-                                              ['strCategory'],
+                                          provider
+                                              .allCategories[index].strCategory,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 20.sp),
@@ -100,7 +100,7 @@ class MenuTab extends StatelessWidget {
                                       child: CachedNetworkImage(
                                         fit: BoxFit.cover,
                                         imageUrl: provider.allCategories[index]
-                                            ['strCategoryThumb'],
+                                            .strCategoryThumb,
                                       ),
                                     ),
                                   ),

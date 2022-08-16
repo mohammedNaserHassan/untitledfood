@@ -48,7 +48,7 @@ class _CodeMobileState extends State<CodeMobile> {
                 Container(
                     alignment: Alignment.center,
                     margin: EdgeInsets.symmetric(horizontal: 30.w),
-                    child: MyText(
+                    child: CustomText(
                       text:
                           'Please check your mobile number 059*****20  continue to reset your password',
                       verticall: 5.h,

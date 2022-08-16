@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
 class  CardShopping extends StatelessWidget {
   const  CardShopping();
-
   @override
   Widget build(BuildContext context) {
     return Consumer<MyProvider>(
@@ -18,7 +17,6 @@ class  CardShopping extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(left: 20.w),
             child:   IconButton(onPressed: (){
-              provider.setShopping(false);
             },icon: Icon(Icons.arrow_back_ios)),
           ),
           ],

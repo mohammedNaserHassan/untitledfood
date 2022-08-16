@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-class MyText extends StatelessWidget {
+class CustomText extends StatelessWidget {
   String text;
   double verticall;
   double horizontal;
-   MyText({this.text,this.verticall,this.horizontal=0});
+   CustomText({this.text,this.verticall,this.horizontal=0});
 
   @override
   Widget build(BuildContext context) {

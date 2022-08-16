@@ -17,7 +17,8 @@ class _SplachScreenState extends State<SplachScreen> {
     super.initState();
     Provider.of<MyProvider>(context, listen: false).getAllCategories();
     Provider.of<MyProvider>(context, listen: false).getMealByFirstLetter('l');
-    Provider.of<MyProvider>(context, listen: false).getMealByFirstLetters('m');
+    Provider.of<MyProvider>(context, listen: false).getMealByFirstLetters('e');
+    Provider.of<MyProvider>(context, listen: false).onChangeTab(2);
   }
 
   @override

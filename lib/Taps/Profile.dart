@@ -23,20 +23,29 @@ class _ProfileTabState extends State<ProfileTab> {
   Widget build(BuildContext context) {
     return Consumer<AuthProvider>(
       builder: (context, provider, v) => Container(
+        margin: EdgeInsets.only(bottom:100.h),
         color: Colors.white,
         child: SingleChildScrollView(
           child: Column(
             children: [
-              GestureDetector(
-                onTap: () {
-                  provider.selectFile();
-                },
-                child: provider.file == null
-                    ? Image.asset('Assets/Images/profile.png')
-                    : CircleAvatar(
-                        radius: 40.sp,
-                        backgroundImage: FileImage(provider.file),
-                      ),
+              Stack(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      provider.selectFile();
+                    },
+                    child: provider.file == null
+                        ? Image.asset('Assets/Images/original.png')
+                        : CircleAvatar(
+                      radius: 50.r,
+                            backgroundImage: FileImage(provider.file),
+                          ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                      left: 7,
+                      child: Image.asset('Assets/Images/halfImage.png'))
+                ],
               ),
               GestureDetector(
                 onTap: () {
@@ -73,56 +82,55 @@ class _ProfileTabState extends State<ProfileTab> {
                     'Sign Out',
                     style: TextStyle(color: Colors.grey, fontSize: 11.sp),
                   )),
-              TextfieldProfile(
-                controller: provider.nameController,
-                label: 'Name',
-                enabled: provider.enable,
-              ),
-              TextfieldProfile(
-                controller: provider.emailController,
-                label: 'Email',
-                enabled: false,
-              ),
-              TextfieldProfile(
-                controller: provider.mobileNoController,
-                label: 'Mobile No',
-                enabled: false,
-              ),
-              TextfieldProfile(
-                controller: provider.addressController,
-                label: 'Address',
-                enabled: provider.enable,
-              ),
-              TextfieldProfile(
-                controller: provider.passwordController,
-                label: 'Password',
-                enabled: provider.enable,
-              ),
-              TextfieldProfile(
-                controller: provider.confirmController,
-                label: 'Confirm Password',
-                enabled: provider.enable,
-              ),
-              Visibility(
-                visible: !provider.enable,
-                child: SizedBox(
-                  height: 30.h,
-                ),
-              ),
-              Visibility(
-                visible: provider.enable,
-                child: Container(
-                    margin: EdgeInsets.only(bottom: 40.h),
-                    child: CustomButton(
-                      function: () {
-                        provider.updateProfile();
-                      },
-                      text: 'Save',
-                      textcolor: Colors.white,
-                      fill: Color(0xfffc6011),
-                    )),
-              )
-            ],
+
+               TextfieldProfile(
+                 controller: provider.nameController,
+                 label: 'Name',
+                 enabled: provider.enable,
+               ),
+               TextfieldProfile(
+                 controller: provider.emailController,
+                 label: 'Email',
+                 enabled: false,
+               ),
+               TextfieldProfile(
+                 controller: provider.mobileNoController,
+                 label: 'Mobile No',
+                 enabled: false,
+               ),
+               TextfieldProfile(
+                 controller: provider.addressController,
+                 label: 'Address',
+                 enabled: provider.enable,
+               ),
+               TextfieldProfile(
+                 controller: provider.passwordController,
+                 label: 'Password',
+                 enabled: provider.enable,
+               ),
+               TextfieldProfile(
+                 controller: provider.confirmController,
+                 label: 'Confirm Password',
+                 enabled: provider.enable,
+               ),
+               Visibility(
+                 visible: !provider.enable,
+                 child: SizedBox(
+                   height: 30.h,
+                 ),
+               ),
+               Visibility(
+                 visible: provider.enable,
+                 child: CustomButton(
+                   function: () {
+                     provider.updateProfile();
+                   },
+                   text: 'Save',
+                   textcolor: Colors.white,
+                   fill: Color(0xfffc6011),
+                 ),
+               )
+             ],
           ),
         ),
       ),

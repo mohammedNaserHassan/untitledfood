@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
+import 'package:untitledfood/Services/Constants.dart';
 import 'package:untitledfood/Widgets/GeneralComponents/CardIcon.dart';
 import 'package:untitledfood/Widgets/GeneralComponents/myDropDown.dart';
 import 'package:untitledfood/Widgets/Custom/customIconDetails.dart';
@@ -68,7 +69,6 @@ class _MealDetailsState extends State<MealDetails> {
                         child: CardIcon(
                           color: Colors.white,
                           function: () {
-                            provider.setShopping(true);
                           },
                         )),
                     Positioned(
@@ -85,7 +85,7 @@ class _MealDetailsState extends State<MealDetails> {
                                 topRight: Radius.circular(40.sp),
                                 topLeft: Radius.circular(40.sp),
                               )),
-                          width: MediaQuery.of(context).size.width,
+                          width: widthDevice,
                           height: 500.h,
                           child: SingleChildScrollView(
                             child: Column(
@@ -130,9 +130,9 @@ class _MealDetailsState extends State<MealDetails> {
                                     margin:
                                         EdgeInsets.only(top: 30.h, left: 20.w),
                                     child: Text(
-                                      provider.selectedProduct.strInstructions
-                                              .substring(0, 280) +
+                                      provider.selectedProduct.strInstructions +
                                           '.',
+                                      overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           fontSize: 12.sp, color: Colors.grey),
                                     )),
@@ -181,7 +181,7 @@ class _MealDetailsState extends State<MealDetails> {
                                             fontSize: 17.sp),
                                       ),
                                       CustomIconDetails(
-                                        function: provider.decrement(),
+                                        function: provider.decrement,
                                         iconData: Icons.remove,
                                       ),
                                       Container(
@@ -201,7 +201,7 @@ class _MealDetailsState extends State<MealDetails> {
                                                 color: Colors.deepOrange)),
                                       ),
                                       CustomIconDetails(
-                                        function: provider.increment(),
+                                        function: provider.increment,
                                         iconData: Icons.add,
                                       )
                                     ],
@@ -256,7 +256,7 @@ class _MealDetailsState extends State<MealDetails> {
                                                     Text(
                                                       'Add toCart',
                                                       style: TextStyle(
-                                                          color: Colors.white),
+                                                          color: Colors.white,fontSize: 10.sp),
                                                     )
                                                   ],
                                                 ),

@@ -12,7 +12,7 @@ class ListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<MyProvider>(
-      builder: (contexy, provider, v) =>  provider.filteredPrducts == null
+      builder: (contexy, provider, v) =>  provider.filteredPrductss == null
             ? Center(
                 child: CircularProgressIndicator(),
               )
@@ -24,7 +24,7 @@ class ListItem extends StatelessWidget {
                 itemBuilder: (context, index) => GestureDetector(
                   onTap: () {
                     Url_lancher_helper.url.openWebpage(
-                        provider.filteredPrducts[index]['strYoutube']);
+                        provider.filteredPrductss[index].strYoutube);
                   },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -32,12 +32,11 @@ class ListItem extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 10.h),
                         child: CachedNetworkImage(
-                          imageUrl: provider.filteredPrducts[index]
-                              ['strMealThumb'],
+                          imageUrl: provider.filteredPrductss[index].strMealThumb,
                         ),
                       ),
                       Text(
-                        provider.filteredPrducts[index]['strMeal'],
+                        provider.filteredPrductss[index].strMeal,
                         style: TextStyle(
                             fontSize: 16.sp, fontWeight: FontWeight.bold),
                       ),
@@ -59,7 +58,7 @@ class ListItem extends StatelessWidget {
                             width: 5.w,
                           ),
                           Text(
-                            provider.filteredPrducts[index]['strCategory'],
+                            provider.filteredPrducts[index].strCategory,
                             style: TextStyle(color: Colors.grey),
                           ),
                           Container(

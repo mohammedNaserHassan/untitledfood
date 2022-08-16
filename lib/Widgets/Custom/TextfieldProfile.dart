@@ -20,7 +20,8 @@ class TextfieldProfile extends StatelessWidget {
             hintStyle: TextStyle(color: Colors.grey),
             hintText: label,
             contentPadding: EdgeInsets.all(20),
-            border: InputBorder.none
+            border: InputBorder.none,
+          label: Text(label)
         ),
       ),
     );

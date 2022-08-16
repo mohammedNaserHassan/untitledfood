@@ -12,15 +12,14 @@ import 'package:untitledfood/Auth/UI/LoginPage.dart';
 import 'package:untitledfood/Auth/UI/MainAuth.dart';
 import 'package:untitledfood/Auth/UI/NewPassword.dart';
 import 'package:untitledfood/Auth/UI/OTPhone.dart';
+import 'package:untitledfood/UIScreens/HomePageTabs.dart';
 import 'package:untitledfood/Models/RegisterRequest.dart';
 import 'package:untitledfood/Services/Router.dart';
 import 'package:untitledfood/Services/customDialog.dart';
-import 'package:untitledfood/UIScreens/HomePage.dart';
 import 'package:untitledfood/UIScreens/Boarding/Slider_one.dart';
 
 class AuthProvider extends ChangeNotifier {
   /////////////////////////////////////////////Verify By Phone//////////////////////////////
-
   TextEditingController pinPutController = TextEditingController();
   FocusNode pinPutFocusNode = FocusNode();
 
@@ -39,7 +38,6 @@ class AuthProvider extends ChangeNotifier {
       }
     });
   }
-
   String verificationCode;
   final GlobalKey<ScaffoldState> scaffoldkey = GlobalKey<ScaffoldState>();
 
@@ -68,7 +66,7 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  ///////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   //////Controller//////
   TextEditingController emailController = TextEditingController();
@@ -87,16 +85,28 @@ class AuthProvider extends ChangeNotifier {
     //addressController.clear();
   }
 
-////////////////////////////////////
+  fillControllers() {
+    if (user != null) {
+      emailController.text = user.email;
+      nameController.text = user.name;
+      mobileNoController.text = user.mobileNo;
+      addressController.text = user.address;
+      passwordController.text = user.password;
+      confirmController.text = user.Confirmpassword;
+    }
+  }
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////Select Image//////////////////////////////////////////
   File file;
-
   selectFile() async {
     XFile imageFile =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
+        await ImagePicker().pickImage(source: ImageSource.camera);
     this.file = File(imageFile.path);
     notifyListeners();
   }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /////Sign up//////////////////////////////
 
@@ -136,9 +146,9 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  //////Login////////////////////////////////////
+  ///////////////////////////Login////////////////////////////////////
   login() async {
     if (emailController.text.length != 0 &&
         passwordController.text.length != 0) {
@@ -146,7 +156,8 @@ class AuthProvider extends ChangeNotifier {
           .signin(emailController.text, passwordController.text);
 
       await fireStore_Helper.helper.getUserFromFirestore();
-      AppRouter.appRouter.goWithInternalAnimation(HomePage());
+      getUserFromFirestore();
+      AppRouter.appRouter.goWithInternalAnimation(HomePageTabs());
     } else {
       CustomDialog.customDialog.showCustom('Email or password is empty');
     }
@@ -155,26 +166,26 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  //////Verification//////////////////////
+  //////Send Verification with Google//////////////////////
   sendVerification() {
     Auth_helper.auth_helper.vereifyEmail();
     Auth_helper.auth_helper.signOut();
   }
 
-//////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  //////////////////Reset Password////////////////////////
+  //////////////////Reset Password by google////////////////////////
   resetPassword() async {
     Auth_helper.auth_helper.resetPassword(emailController.text);
     //clearController();
     AppRouter.appRouter.gotoPagewithReplacment(CodeMobile.routeName);
   }
 
-/////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  //////GetCurrent User//////////////////////////////
+  //////////////////GetCurrent User//////////////////////////////
 
   RegisterRequest user;
 
@@ -184,9 +195,7 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  ///////////////
-
-  //////Get All Users////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //////Get All Users////////
   List<RegisterRequest> users;
@@ -197,10 +206,9 @@ class AuthProvider extends ChangeNotifier {
     users.removeWhere((element) => element.id == myId);
     notifyListeners();
   }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/////////////////////
-
-//////Check User Found///////
+///////////////////////////Check User Found Or Not ////////////////////////////
   checkLogin() {
     bool isLoggin = Auth_helper.auth_helper.checkUser();
     if (isLoggin) {
@@ -213,26 +221,19 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  ///////////////////////
-  fillControllers() {
-    if (user != null) {
-      emailController.text = user.email;
-      nameController.text = user.name;
-      mobileNoController.text = user.mobileNo;
-      addressController.text = user.address;
-      passwordController.text = user.password;
-      confirmController.text = user.Confirmpassword;
-    }
-  }
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  ////////////////////
+
+  /////////Make TextField not enable///////////
   bool enable = false;
 
   setEnabled() {
     this.enable = true;
     notifyListeners();
   }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+  ////////////Update profile on firebase////////////////////////
   updateProfile() async {
     this.enable = false;
     RegisterRequest userModel = RegisterRequest(
@@ -253,6 +254,7 @@ class AuthProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   ///////////////Login With FaceBook/////////////
 
@@ -309,7 +311,7 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-///////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////Google Sign In///////////////////////////////////////////////
   bool google = false;
@@ -346,7 +348,7 @@ class AuthProvider extends ChangeNotifier {
         );
         await fireStore_Helper.helper.addUserToFireBase(registerRequest);
         await getUserFromFirestore();
-        AppRouter.appRouter.gotoPagewithReplacment(HomePage.routeName);
+        AppRouter.appRouter.gotoPagewithReplacment(HomePageTabs.routeName);
       } // if result not null we simply call the MaterialpageRoute,
       // for go to the HomePage screen
     }
@@ -357,7 +359,7 @@ class AuthProvider extends ChangeNotifier {
     print('sign out');
   }
 
-//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////Sign out////////////////////////////////////
   logOut() async {
@@ -365,5 +367,5 @@ class AuthProvider extends ChangeNotifier {
     clearController();
     AppRouter.appRouter.gotoPagewithReplacment(MainAuth.routeName);
   }
-/////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

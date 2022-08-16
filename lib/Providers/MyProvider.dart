@@ -13,54 +13,54 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:map_launcher/map_launcher.dart' as MapLuncher;
 
 import '../Models/Meal.dart';
-
+import '../Taps/MainHome.dart';
+enum Payment{ Cash, Visa,Credit}
 class MyProvider extends ChangeNotifier {
   MyProvider() {
     getMyLocation();
   }
-bool isShopping =false;
-  setShopping(bool state){
-    int x = selectedIndex;
-    if(state){
-      isShopping=true;
-      titleScaffod ='Card';
-    }
-    else{
-      isShopping=false;
-      onChangeTab(x);
-      notifyListeners();
-    }
+  // Methods of Payments /////////////////////////////////////////
+var payment = Payment.Cash;
+  setPayment(Payment _payment){
+    payment = _payment;
     notifyListeners();
   }
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /////Get All Categories////////////////
-  List<dynamic> allCategories;
+  List<Categories> allCategories;
 
   getAllCategories() async {
-    Map<dynamic, dynamic> categories =
-        await ApiHelper.helper.getAllCategories();
-    allCategories = categories['categories'];
+    List<dynamic> categories = await ApiHelper.helper.getAllCategories();
+    print(categories);
+    allCategories = categories.map((e) => Categories.fromJson(e)).toList();
     notifyListeners();
   }
 
 ///////////////////////////////////////////////////////
 
-/////Set length of resturent ///////
-int length=3;
-  int lengthD=5;
-  int lengthC=3;
-  setLength(int len){
-    this.length=len;
+/////Set length of restaurant ///////
+  int length = 3;
+  int lengthD = 5;
+  int lengthC = 3;
+
+  setLength(int len) {
+    this.length = len;
     notifyListeners();
   }
-  setLengthD(int lengh){
-    this.lengthD=lengh;
+
+  setLengthD(int lengh) {
+    this.lengthD = lengh;
     notifyListeners();
   }
-  setLengthC(int l){
-    this.lengthC=l;
+
+  setLengthC(int l) {
+    this.lengthC = l;
     notifyListeners();
   }
-  /////////////
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 //////////////Get Specific Meal/////////////////////////
   Meal selectedProduct;
@@ -75,7 +75,7 @@ int length=3;
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  ////////Increment and Decrement///////////
+  ////////Increment and Decrement in orders///////////
   int value = 1;
 
   increment() {
@@ -89,19 +89,24 @@ int length=3;
     }
     notifyListeners();
   }
-bool valueSwitch =false;
-  changeSwitch(bool val){
-    this.valueSwitch=val;
+
+  bool valueSwitch = false;
+
+  changeSwitch(bool val) {
+    this.valueSwitch = val;
     notifyListeners();
   }
-  //////////////////////////////
-  List<bool> states= [false,false,false,false,false];
-bool stateofWidgets = true;
-  changeStates(int index){
-    this.stateofWidgets=!this.stateofWidgets;
-    this.states[index]=!this.states[index];
+
+  ////////////////////////////// Change Tabs moves //////////////////////////////
+  List<bool> states = [false, false, false, false, false];
+  bool stateofWidgets = true;
+
+  changeStates(int index) {
+    this.stateofWidgets = !this.stateofWidgets;
+    this.states[index] = !this.states[index];
     notifyListeners();
   }
+
   ////////DropDown//////////
   String valueDrop;
 
@@ -109,8 +114,8 @@ bool stateofWidgets = true;
     this.valueDrop = value;
     notifyListeners();
   }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  ////////////////////////////////////////////////////////////
 
 //////////////////////////Get Meals by name categories/////////////////////////////
   String selectedCategory = '';
@@ -123,32 +128,37 @@ bool stateofWidgets = true;
     categoryProducts = products['meals'];
     notifyListeners();
   }
+
   ////////////////////////////////////////////////////////////
   bool visible = false;
+
   //////////////////////////////////////////add floating action button to tabs ///////////////////////////////////////////////////////////////
-bool isFloating = false;
-  setFloating(){
-    this.isFloating=true;
+  bool isFloating = false;
+
+  setFloating() {
+    this.isFloating = true;
     notifyListeners();
   }
+
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  List<Widget> taps = [MenuTab(), OffersTab(), ProfileTab(), MoreTab()];
+  List<Widget> taps = [MenuTab(), OffersTab(),MainHome(), ProfileTab(), MoreTab()];
 
   ///////Get Meals By First Letter/////////////
-List<dynamic> filteredPrducts;
-  getMealByFirstLetter(String l)async{
-    Map<dynamic, dynamic> products = await ApiHelper.helper.getMealsByFirstLetter(l);
-    filteredPrducts=products['meals'];
+  List<Meal> filteredPrducts;
+
+  getMealByFirstLetter(String l) async {
+    List<dynamic> products = await ApiHelper.helper.getMealsByFirstLetter(l);
+    filteredPrducts = products.map((e) => Meal.fromJson(e)).toList();
   }
 
-  List<dynamic> filteredPrductss;
-  getMealByFirstLetters(String l)async{
-    Map<dynamic, dynamic> products = await ApiHelper.helper.getMealsByFirstLetter(l);
-    filteredPrductss=products['meals'];
+  List<Meal> filteredPrductss;
 
+  getMealByFirstLetters(String l) async {
+    List<dynamic> products = await ApiHelper.helper.getMealsByFirstLetter(l);
+    filteredPrductss = products.map((e) => Meal.fromJson(e)).toList();
   }
 
-////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //////////////////////open in map application////////////////
@@ -158,7 +168,7 @@ List<dynamic> filteredPrducts;
         destination: MapLuncher.Coords(point.latitude, point.longitude));
   }
 
-////////////////OR////////////////////////////////
+////////////////OR open in map application in another way////////////////////////////////
   void openMap(LatLng point) async {
     String url =
         'https://www.google.com/maps/search/?api=1&query=${point.latitude},${point.longitude}';
@@ -169,7 +179,7 @@ List<dynamic> filteredPrducts;
     }
   }
 
-////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   ////////////////Go with animation to the point////////////////
   Set<Marker> markers = {};
@@ -201,13 +211,13 @@ List<dynamic> filteredPrducts;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-  ////////////////Scaffod and Bottom navigation bar////////////////////////////////
+  ////////////////set Scaffold title  and Bottom navigation bar////////////////////////////////
   String titleScaffod = 'Menu';
-  int selectedIndex = 0;
+  int selectedIndex = 2;
 
   void onChangeTab(int index) {
     selectedIndex = index;
-   this.isFloating=false;
+
     switch (selectedIndex) {
       case 0:
         titleScaffod = 'Menu';
@@ -216,19 +226,17 @@ List<dynamic> filteredPrducts;
         titleScaffod = 'Latest Offers';
         break;
       case 2:
-        titleScaffod = 'Profile';
+        titleScaffod = 'Good morning';
         break;
       case 3:
-        titleScaffod = 'More';
+        titleScaffod = 'Profile';
         break;
       case 4:
-        titleScaffod = 'Good morning';
+        titleScaffod = 'More';
     }
     notifyListeners();
   }
-  setSelectefIndex(){
-    this.titleScaffod='Good morning';
-    notifyListeners();
-  }
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

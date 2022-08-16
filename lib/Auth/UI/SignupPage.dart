@@ -33,7 +33,7 @@ class SignupPage extends StatelessWidget {
                     style: TextStyle(fontSize: 30.sp),
                   ))),
               Center(
-                  child: MyText(
+                  child: CustomText(
                       text: 'Add your details to sign up', verticall: 5.h)),
               SizedBox(
                 height: 20.h,

@@ -6,7 +6,8 @@ import 'package:untitledfood/Auth/UI/LoginPage.dart';
 import 'package:untitledfood/Auth/UI/MainAuth.dart';
 import 'package:untitledfood/Auth/UI/NewPassword.dart';
 import 'package:untitledfood/Auth/UI/SignupPage.dart';
-import 'package:untitledfood/UIScreens/HomePage.dart';
+import 'package:untitledfood/Services/Constants.dart';
+import 'package:untitledfood/UIScreens/HomePageTabs.dart';
 import 'package:untitledfood/UIScreens/MealDetails.dart';
 import 'package:untitledfood/UIScreens/Boarding/Slider_one.dart';
 import 'package:untitledfood/UIScreens/Boarding/Slider_two.dart';
@@ -22,8 +23,15 @@ import 'UIScreens/Boarding/Slider_three.dart';
 import 'UIScreens/MealsCategory.dart';
 
 void main() {
+  // Call native code before run app
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MultiProvider(providers: [
+  //Set Orientation for mobile in portrait Mode
+  SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitUp,DeviceOrientation.portraitDown]
+  );
+  runApp(
+    // Using Multi Provider for State Management
+      MultiProvider(providers: [
     ChangeNotifierProvider<AuthProvider>(
       create: (context) => AuthProvider(),
     ),
@@ -38,8 +46,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Using for Responsive
     return ScreenUtilInit(
-      designSize: const Size(392.7, 834.9),
+      designSize: const Size(widthDevice, heightDevice),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
@@ -70,7 +79,7 @@ class MyApp extends StatelessWidget {
             Slider_one.routeName: (_) => Slider_one(),
             Slider_two.routeName: (_) => Slider_two(),
             Slider_three.routeName: (_) => Slider_three(),
-            HomePage.routeName: (_) => HomePage(),
+            HomePageTabs.routeName: (_) => HomePageTabs(),
             MealsCategory.routeName: (_) => MealsCategory(),
             MealDetails.routeName: (_) => MealDetails(),
             MainHome.routeName: (_) => MainHome(),
@@ -82,4 +91,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

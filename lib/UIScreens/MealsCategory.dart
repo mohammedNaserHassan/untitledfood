@@ -4,9 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:untitledfood/UIScreens/HomePageTabs.dart';
 import 'package:untitledfood/Providers/MyProvider.dart';
 import 'package:untitledfood/Services/Router.dart';
-import 'package:untitledfood/UIScreens/HomePage.dart';
 import 'package:untitledfood/UIScreens/MealDetails.dart';
 import 'package:untitledfood/Widgets/GeneralComponents/CardIcon.dart';
 import 'package:untitledfood/Widgets/GeneralComponents/GoBack.dart';
@@ -25,7 +25,6 @@ class MealsCategory extends StatefulWidget {
 class _MealsCategoryState extends State<MealsCategory> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Provider.of<MyProvider>(context, listen: false)
         .getCategoryProducts(widget.name);
@@ -39,7 +38,7 @@ class _MealsCategoryState extends State<MealsCategory> {
         actions: [
          CardIcon(color: Colors.black,)
         ],
-        leading: GoBack(page: HomePage.routeName,),
+        leading: GoBack(page: HomePageTabs.routeName,),
         elevation: 0,
         backgroundColor: Colors.white,
         title: Text(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:untitledfood/UIScreens/HomePageTabs.dart';
 import 'package:untitledfood/Services/Router.dart';
-import 'package:untitledfood/UIScreens/HomePage.dart';
 import 'package:untitledfood/Widgets/AuthComponents/CustomButton.dart';
 
 class Slider_three extends StatelessWidget {
@@ -18,7 +18,7 @@ class Slider_three extends StatelessWidget {
         children: [
           Image.asset('Assets/Images/5.png'),
           CustomButton(text: 'Next',function: (){
-            AppRouter.appRouter.gotoPagewithReplacment(HomePage.routeName);
+            AppRouter.appRouter.gotoPagewithReplacment(HomePageTabs.routeName);
           },
             textcolor: Colors.white,
             fill: Color(0xfffc6011),

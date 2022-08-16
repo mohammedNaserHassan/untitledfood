@@ -47,11 +47,13 @@ dependencies:
   google_maps_flutter:
   geolocator:
   after_layout:
-  url_launcher:
+  url_launcher: ^6.1.5
   map_launcher:
   animated_card:
   keyboard_visibility:
   flutter_screenutil:
+  curved_navigation_bar:
+  flutter_svg:
 
 
 dev_dependencies:

@@ -113,6 +113,12 @@ class PaymentDetails extends StatelessWidget {
                 showModalBottomSheet(
                     isScrollControlled: true,
                     context: context,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10)
+                      )
+                    ),
                     builder: (context) {
                       return BottomSheetW();
                     });
